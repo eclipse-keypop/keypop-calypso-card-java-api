@@ -24,7 +24,7 @@ repositories {
     mavenLocal()
     maven(url = "https://repo.eclipse.org/service/local/repositories/maven_central/content")
     mavenCentral()
-    maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots")
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 }
 dependencies {
     implementation("org.eclipse.keypop:keypop-reader-java-api:2.0.0-SNAPSHOT") {isChanging=true}
