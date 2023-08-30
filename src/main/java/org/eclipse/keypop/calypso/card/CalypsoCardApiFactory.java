@@ -17,7 +17,7 @@ import org.eclipse.keypop.calypso.card.transaction.FreeTransactionManager;
 import org.eclipse.keypop.calypso.card.transaction.SearchCommandData;
 import org.eclipse.keypop.calypso.card.transaction.SecureExtendedModeTransactionManager;
 import org.eclipse.keypop.calypso.card.transaction.SecurePkiModeTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SecureStandardModeTransactionManager;
+import org.eclipse.keypop.calypso.card.transaction.SecureRegularModeTransactionManager;
 import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySetting;
 import org.eclipse.keypop.calypso.card.transaction.spi.AsymmetricCryptoTransactionManagerFactory;
 import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoTransactionManagerFactory;
@@ -70,16 +70,16 @@ public interface CalypsoCardApiFactory {
   FreeTransactionManager createFreeTransactionManager(CardReader cardReader, CalypsoCard card);
 
   /**
-   * Returns a new instance of {@link SecureStandardModeTransactionManager}.
+   * Returns a new instance of {@link SecureRegularModeTransactionManager}.
    *
    * @param cardReader The card reader to be used.
    * @param card The selected card on which to operate the transaction.
    * @param securitySetting The security setting to be used.
-   * @return A new instance of {@link SecureStandardModeTransactionManager}.
+   * @return A new instance of {@link SecureRegularModeTransactionManager}.
    * @throws IllegalArgumentException If one of the parameters is null.
    * @since 2.0.0
    */
-  SecureStandardModeTransactionManager createSecureStandardModeTransactionManager(
+  SecureRegularModeTransactionManager createSecureStandardModeTransactionManager(
       CardReader cardReader, CalypsoCard card, SymmetricCryptoSecuritySetting securitySetting);
 
   /**

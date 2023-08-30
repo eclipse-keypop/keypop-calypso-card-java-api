@@ -5,6 +5,94 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+:warning: The project has been migrated from the [Calypsonet Terminal Calypso API](https://github.com/calypsonet/calypsonet-terminal-calypso-java-api)
+GitHub repository.
+### Added
+- `CalypsoCardApiFactory` centralizes the methods used to create instances of the various interfaces of the API.
+- Exception `InvalidPinException` to be thrown if an invalid PIN is provided by the user.
+- SPI `CardTransactionCryptoExtension` must be implemented by a crypto extension to extends a card transaction with
+  specific crypto features (e.g. signature computation, etc.).
+- SPI `SymmetricCryptoTransactionManagerFactory` must be implemented by a symmetric crypto extension so that it can 
+  be associated with a card transaction requiring a symmetric cryptographic module to secure the transaction
+  (e.g. Legacy SAM, Open SAM, etc.).
+- SPI `AsymmetricCryptoTransactionManagerFactory` must be implemented by an asymmetric crypto extension so that it 
+  can be associated with a card transaction requiring an asymmetric cryptographic module to secure the transaction
+  (e.g. PKI).
+- Method `SecureTransactionManager.getCryptoExtension(Class<E> cryptoExtensionClass)` returns the
+  `CardTransactionCryptoExtension` associated with the secure card transaction.
+### Changed
+- The project license is now "MIT License" (previously "Eclipse Public License 2.0").
+- CI: The Gradle plugin `org.eclipse.keyple:keyple-gradle:0.2.+` has been replaced
+  by `org.eclipse.keypop:keypop-gradle:0.1.+`.
+- Renamed:
+  - Artifact `org.calypsonet.terminal:calypsonet-terminal-calypso-java-api` -> `org.eclipse.keypop:keypop-calypso-card-java-api`
+  - Package `org.calypsonet.terminal.calypso` -> `org.eclipse.keypop.calypso.card`
+  - Class `CalypsoApiProperties` -> `CalypsoCardApiProperties`
+  - Class `InvalidCardSignatureException` -> `InvalidCardMacException`
+  - Class `CardSignatureNotVerifiableException` -> `CardMacNotVerifiableException`
+  - Class `SamIOException` -> `CryptoIOException`
+  - Interface `CalypsoCardSelection` -> `CalypsoCardSelectionExtension`
+  - Interface `CardSecuritySetting` -> `SymmetricCryptoSecuritySetting`
+  - Method `initSamContextForNextTransaction()` -> `initCryptoContextForNextTransaction()`
+- Method signature refactored:
+  - `processCommands(boolean closePhysicalChannel)` -> `processCommands(ChannelControl channelControl)`. 
+    The enum `ChannelControl` has been created for this purpose.
+- `CalypsoCard` extends now `IsoSmartCard`.
+- `CardTransactionManager` has been split into the followings interfaces:
+  - `FreeTransactionManager`: Manager of card transactions requiring no cryptographic computation.
+  - `SecureRegularModeTransactionManager`: Manager of card transactions secured by symmetric key cryptographic 
+    algorithms, compatible with all Regular Calypso products.
+  - `SecureExtendedModeTransactionManager`: Manager of card transactions secured by symmetric key cryptographic 
+    algorithms, adding additional operations available only for "Calypso Prime Extended" products.
+  - `SecurePkiModeTransactionManager`: Manager of card transactions secured by asymmetric key cryptographic 
+    algorithms, compatible only with "Calypso Prime PKI" products.
+### Removed
+- All elements related to the SAM have been removed and will be provided by specific symmetric crypto extensions:
+  - `CommonSecuritySetting`
+  - `SamSecuritySetting`
+  - `CalypsoSamSelection`
+  - `CalypsoSam`
+  - `SamTransactionManager`
+  - `CommonSignatureComputationData`
+  - `BasicSignatureComputationData`
+  - `TraceableSignatureComputationData`
+  - `CommonSignatureVerificationData`
+  - `BasicSignatureVerificationData`
+  - `TraceableSignatureVerificationData`
+  - `SamRevocationServiceSpi`
+  - `SamRevokedException`
+  - `InvalidSignatureException`
+- All deprecated and obsolete methods have been removed:
+  - `CalypsoCardSelection.filterByCardProtocol(String cardProtocol)` (moved to the "Keypop Reader Java API")
+  - `CalypsoCardSelection.filterByPowerOnData(String powerOnDataRegex)` (moved to the "Keypop Reader Java API")
+  - `CalypsoCardSelection.filterByDfName(byte[] aid)` (moved to the "Keypop Reader Java API")
+  - `CalypsoCardSelection.filterByDfName(String aid)` (moved to the "Keypop Reader Java API")
+  - `CalypsoCardSelection.setFileOccurrence(FileOccurrence fileOccurrence)` (moved to the "Keypop Reader Java API")
+  - `CalypsoCardSelection.setFileControlInformation(FileControlInformation fileControlInformation)` (moved to the "Keypop Reader Java API")
+  - `CalypsoCardSelection.addSuccessfulStatusWord(int statusWord)`
+  - `CalypsoCardSelection.prepareSelectFile(byte[] lid)`
+  - `CalypsoCardSelection.prepareReadRecordFile(byte sfi, int recordNumber)`
+  - `CalypsoCard.getAllFiles()`
+  - `CommonTransactionManager.getSecuritySetting()`
+  - `CommonTransactionManager.prepareComputeSignature(CommonSignatureComputationData<?> data)`
+  - `CommonTransactionManager.prepareVerifySignature(CommonSignatureVerificationData<?> data)`
+  - `CommonTransactionManager.processCommands()`
+  - `CardTransactionManager.getCardReader()`
+  - `CardTransactionManager.getCalypsoCard()`
+  - `CardTransactionManager.getCardSecuritySetting()`
+  - `CardTransactionManager.prepareSelectFile(byte[] lid)`
+  - `CardTransactionManager.prepareReadRecordFile(byte sfi, int recordNumber)`
+  - `CardTransactionManager.prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize)`
+  - `CardTransactionManager.prepareReadCounterFile(byte sfi, int countersNumber)`
+  - `CardTransactionManager.prepareReleaseCardChannel()`
+  - `CardTransactionManager.processCardCommands()`
+  - `CardTransactionManager.processVerifyPin(byte[] pin)`
+  - `CardTransactionManager.processChangePin(byte[] newPin)`
+  - `CardTransactionManager.processChangeKey(int keyIndex, byte newKif, byte newKvc, byte issuerKif, byte issuerKvc)`
+  - `CardTransactionManager.processOpening(WriteAccessLevel writeAccessLevel)`
+  - `CardTransactionManager.processClosing()`
+  - `CardTransactionManager.processCancel()`
+  - `CardSecuritySetting.setSamResource(CardReader samReader, CalypsoSam calypsoSam)`
 
 ## [1.8.0] - 2023-04-04
 ### Added

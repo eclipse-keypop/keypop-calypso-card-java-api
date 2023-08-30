@@ -15,7 +15,7 @@ import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.reader.CardReader;
 
 /**
- * Manager of card transactions secured by "symmetric" key cryptographic algorithms, compatible with
+ * Manager of card transactions secured by symmetric key cryptographic algorithms, compatible with
  * all Calypso products.
  *
  * <p>See {@link SecureSymmetricCryptoTransactionManager} parent interface for more information and
@@ -27,5 +27,5 @@ import org.eclipse.keypop.reader.CardReader;
  *
  * @since 2.0.0
  */
-public interface SecureStandardModeTransactionManager
-    extends SecureSymmetricCryptoTransactionManager<SecureStandardModeTransactionManager> {}
+public interface SecureRegularModeTransactionManager
+    extends SecureSymmetricCryptoTransactionManager<SecureRegularModeTransactionManager> {}
