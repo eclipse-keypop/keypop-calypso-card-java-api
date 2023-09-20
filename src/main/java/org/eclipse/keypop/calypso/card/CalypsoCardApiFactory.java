@@ -43,6 +43,7 @@ public interface CalypsoCardApiFactory {
    *
    * @param cryptoTransactionManagerFactory The factory of the crypto manager to be used.
    * @return A new instance of {@link SymmetricCryptoSecuritySetting}.
+   * @throws IllegalArgumentException If the factory is null or invalid.
    * @since 2.0.0
    */
   SymmetricCryptoSecuritySetting createSymmetricCryptoSecuritySetting(
@@ -53,6 +54,7 @@ public interface CalypsoCardApiFactory {
    *
    * @param cryptoTransactionManagerFactory The factory of the crypto manager to be used.
    * @return A new instance of {@link AsymmetricCryptoSecuritySetting}.
+   * @throws IllegalArgumentException If the factory is null or invalid.
    * @since 2.0.0
    */
   AsymmetricCryptoSecuritySetting createAsymmetricCryptoSecuritySetting(
@@ -79,7 +81,7 @@ public interface CalypsoCardApiFactory {
    * @throws IllegalArgumentException If one of the parameters is null.
    * @since 2.0.0
    */
-  SecureRegularModeTransactionManager createSecureStandardModeTransactionManager(
+  SecureRegularModeTransactionManager createSecureRegularModeTransactionManager(
       CardReader cardReader, CalypsoCard card, SymmetricCryptoSecuritySetting securitySetting);
 
   /**

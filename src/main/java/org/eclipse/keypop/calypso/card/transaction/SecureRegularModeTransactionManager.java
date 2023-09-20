@@ -22,7 +22,7 @@ import org.eclipse.keypop.reader.CardReader;
  * details of available card operations.
  *
  * <p>An instance of this interface can be obtained via the method {@link
- * CalypsoCardApiFactory#createSecureStandardModeTransactionManager(CardReader, CalypsoCard,
+ * CalypsoCardApiFactory#createSecureRegularModeTransactionManager(CardReader, CalypsoCard,
  * SymmetricCryptoSecuritySetting)}.
  *
  * @since 2.0.0
