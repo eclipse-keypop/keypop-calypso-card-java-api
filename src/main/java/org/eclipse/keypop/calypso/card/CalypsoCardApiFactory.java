@@ -12,14 +12,11 @@ package org.eclipse.keypop.calypso.card;
 
 import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
-import org.eclipse.keypop.calypso.card.transaction.AsymmetricCryptoSecuritySetting;
 import org.eclipse.keypop.calypso.card.transaction.FreeTransactionManager;
 import org.eclipse.keypop.calypso.card.transaction.SearchCommandData;
 import org.eclipse.keypop.calypso.card.transaction.SecureExtendedModeTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SecurePkiModeTransactionManager;
 import org.eclipse.keypop.calypso.card.transaction.SecureRegularModeTransactionManager;
 import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySetting;
-import org.eclipse.keypop.calypso.card.transaction.spi.AsymmetricCryptoTransactionManagerFactory;
 import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoTransactionManagerFactory;
 import org.eclipse.keypop.reader.CardReader;
 
@@ -48,17 +45,6 @@ public interface CalypsoCardApiFactory {
    */
   SymmetricCryptoSecuritySetting createSymmetricCryptoSecuritySetting(
       SymmetricCryptoTransactionManagerFactory cryptoTransactionManagerFactory);
-
-  /**
-   * Returns a new instance of {@link AsymmetricCryptoSecuritySetting}.
-   *
-   * @param cryptoTransactionManagerFactory The factory of the crypto manager to be used.
-   * @return A new instance of {@link AsymmetricCryptoSecuritySetting}.
-   * @throws IllegalArgumentException If the factory is null or invalid.
-   * @since 2.0.0
-   */
-  AsymmetricCryptoSecuritySetting createAsymmetricCryptoSecuritySetting(
-      AsymmetricCryptoTransactionManagerFactory cryptoTransactionManagerFactory);
 
   /**
    * Returns a new instance of {@link FreeTransactionManager}.
@@ -96,19 +82,6 @@ public interface CalypsoCardApiFactory {
    */
   SecureExtendedModeTransactionManager createSecureExtendedModeTransactionManager(
       CardReader cardReader, CalypsoCard card, SymmetricCryptoSecuritySetting securitySetting);
-
-  /**
-   * Returns a new instance of {@link SecurePkiModeTransactionManager}.
-   *
-   * @param cardReader The card reader to be used.
-   * @param card The selected card on which to operate the transaction.
-   * @param securitySetting The security setting to be used.
-   * @return A new instance of {@link SecurePkiModeTransactionManager}.
-   * @throws IllegalArgumentException If one of the parameters is null.
-   * @since 2.0.0
-   */
-  SecurePkiModeTransactionManager createSecurePkiModeTransactionManager(
-      CardReader cardReader, CalypsoCard card, AsymmetricCryptoSecuritySetting securitySetting);
 
   /**
    * Returns a new instance of {@link SearchCommandData}.
