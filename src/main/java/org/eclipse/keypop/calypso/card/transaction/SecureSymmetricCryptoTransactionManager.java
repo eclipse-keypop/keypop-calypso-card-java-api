@@ -245,29 +245,4 @@ public interface SecureSymmetricCryptoTransactionManager<
    * @since 1.6.0
    */
   T prepareChangeKey(int keyIndex, byte newKif, byte newKvc, byte issuerKif, byte issuerKvc);
-
-  /**
-   * Prepares the cryptographic module for the next transaction by anticipating all security context
-   * configuration operations.
-   *
-   * <p>This feature is only useful if the currently allocated cryptographic module will be used for
-   * the next transaction. It is particularly relevant to optimize the transaction time in a
-   * ticketing context of user card validation.
-   *
-   * <p>For this optimization to be effective, it is necessary to call this method at the very end
-   * of the current transaction, i.e. <u>after</u> having notified the user of the access right
-   * (e.g. after opening the gate).
-   *
-   * @throws IllegalStateException In the following cases:
-   *     <ul>
-   *       <li>No {@link SymmetricCryptoSecuritySetting} is available
-   *       <li>Unprocessed card commands are pending
-   *     </ul>
-   *
-   * @throws ReaderIOException If a communication error with the cryptographic module reader occurs.
-   * @throws CryptoIOException If a communication error with the cryptographic module occurs.
-   * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
-   * @since 1.8.0
-   */
-  void initCryptoContextForNextTransaction();
 }

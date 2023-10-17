@@ -11,21 +11,20 @@
 package org.eclipse.keypop.calypso.card.transaction;
 
 /**
- * Indicates a communication error with the crypto module (e.g. timeout with the reader or the
- * computing unit, network error, etc...).
+ * Indicates that an error occurred when computing a crypto operation.
  *
  * @since 2.0.0
  */
-public final class CryptoIOException extends RuntimeException {
+public final class CryptoException extends RuntimeException {
 
   /**
    * Encapsulates a lower level exception.
    *
    * @param message Message to identify the exception context.
    * @param cause The cause.
-   * @since 1.0.0
+   * @since 2.0.0
    */
-  public CryptoIOException(String message, Throwable cause) {
+  public CryptoException(String message, Throwable cause) {
     super(message, cause);
   }
 }
