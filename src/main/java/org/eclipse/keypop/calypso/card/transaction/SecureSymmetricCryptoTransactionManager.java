@@ -123,6 +123,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvReload(int amount);
@@ -156,6 +158,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvDebit(int amount, byte[] date, byte[] time);
