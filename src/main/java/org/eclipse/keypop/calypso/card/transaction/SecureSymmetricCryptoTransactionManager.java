@@ -97,6 +97,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvReload(int amount, byte[] date, byte[] time, byte[] free);
@@ -191,6 +193,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvDebit(int amount);
@@ -205,6 +209,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    * CalypsoCard#isDfInvalidated()} method.
    *
    * @throws IllegalStateException If the card is already invalidated.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @return The current instance.
    * @since 1.0.0
    */
@@ -221,6 +227,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *
    * @return The current instance.
    * @throws IllegalStateException If the card is not invalidated.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareRehabilitate();

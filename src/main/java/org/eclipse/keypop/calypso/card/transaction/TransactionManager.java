@@ -621,8 +621,6 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
    * @throws InconsistentDataException If inconsistent data have been detected.
    * @throws UnauthorizedKeyException If the card requires an unauthorized session key.
-   * @throws SessionBufferOverflowException If a secure session is open and multiple session mode is
-   *     disabled and the session buffer capacity is not sufficient.
    * @throws CardMacNotVerifiableException If a secure session is open and multiple session mode is
    *     enabled and an intermediate session is correctly closed but the cryptographic module is no
    *     longer available to verify the card MAC.
