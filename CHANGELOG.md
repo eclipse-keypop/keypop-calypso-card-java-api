@@ -12,10 +12,10 @@ GitHub repository.
 - Exception `InvalidPinException` to be thrown if an invalid PIN is provided by the user.
 - SPI `CardTransactionCryptoExtension` must be implemented by a crypto extension to extends a card transaction with
   specific crypto features (e.g. signature computation, etc.).
-- SPI `SymmetricCryptoTransactionManagerFactory` must be implemented by a symmetric crypto extension so that it can 
+- SPI `SymmetricCryptoCardTransactionManagerFactory` must be implemented by a symmetric crypto extension so that it can 
   be associated with a card transaction requiring a symmetric cryptographic module to secure the transaction
   (e.g. Legacy SAM, Open SAM, etc.).
-- SPI `AsymmetricCryptoTransactionManagerFactory` must be implemented by an asymmetric crypto extension so that it 
+- SPI `AsymmetricCryptoCardTransactionManagerFactory` must be implemented by an asymmetric crypto extension so that it 
   can be associated with a card transaction requiring an asymmetric cryptographic module to secure the transaction
   (e.g. PKI).
 - Method `SecureTransactionManager.getCryptoExtension(Class<E> cryptoExtensionClass)` returns the
@@ -28,8 +28,6 @@ GitHub repository.
   - Artifact `org.calypsonet.terminal:calypsonet-terminal-calypso-java-api` -> `org.eclipse.keypop:keypop-calypso-card-java-api`
   - Package `org.calypsonet.terminal.calypso` -> `org.eclipse.keypop.calypso.card`
   - Class `CalypsoApiProperties` -> `CalypsoCardApiProperties`
-  - Class `InvalidCardSignatureException` -> `InvalidCardMacException`
-  - Class `CardSignatureNotVerifiableException` -> `CardMacNotVerifiableException`
   - Class `SamIOException` -> `CryptoIOException`
   - Interface `CalypsoCardSelection` -> `CalypsoCardSelectionExtension`
   - Interface `CardSecuritySetting` -> `SymmetricCryptoSecuritySetting`

@@ -621,11 +621,13 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
    * @throws InconsistentDataException If inconsistent data have been detected.
    * @throws UnauthorizedKeyException If the card requires an unauthorized session key.
-   * @throws CardMacNotVerifiableException If a secure session is open and multiple session mode is
-   *     enabled and an intermediate session is correctly closed but the cryptographic module is no
-   *     longer available to verify the card MAC.
-   * @throws InvalidCardMacException If a secure session is open and multiple session mode is
-   *     enabled and an intermediate session is correctly closed but the card MAC is incorrect.
+   * @throws CardSignatureNotVerifiableException If a secure session is open and multiple session
+   *     mode is enabled and an intermediate session is correctly closed but the cryptographic
+   *     module is no longer available to verify the card MAC.
+   * @throws InvalidCardSignatureException If the card signature is incorrect. In the case of a card
+   *     transaction secured by "symmetrical" cryptography (e.g. SAM), this indicates that the card
+   *     has correctly closed the secure session, but the card session is not authentic because the
+   *     MAC of the card is incorrect.
    * @throws SelectFileException If a "Select File" prepared card command indicated that the file
    *     was not found.
    * @since 1.6.0

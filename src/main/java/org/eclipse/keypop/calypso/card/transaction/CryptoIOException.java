@@ -12,7 +12,7 @@ package org.eclipse.keypop.calypso.card.transaction;
 
 /**
  * Indicates a communication error with the crypto module (e.g. timeout with the reader or the
- * computing unit, network error, etc...).
+ * computing unit, network error, etc.).
  *
  * @since 2.0.0
  */

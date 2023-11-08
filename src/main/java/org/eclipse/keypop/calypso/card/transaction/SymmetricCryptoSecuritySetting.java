@@ -12,14 +12,14 @@ package org.eclipse.keypop.calypso.card.transaction;
 
 import org.eclipse.keypop.calypso.card.CalypsoCardApiFactory;
 import org.eclipse.keypop.calypso.card.WriteAccessLevel;
-import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoTransactionManagerFactory;
+import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoCardTransactionManagerFactory;
 
 /**
  * Security setting for a Calypso card transaction secured by "symmetric" key cryptographic
  * algorithms (e.g. SAM).
  *
  * <p>An instance of this interface can be obtained via the method {@link
- * CalypsoCardApiFactory#createSymmetricCryptoSecuritySetting(SymmetricCryptoTransactionManagerFactory)}.
+ * CalypsoCardApiFactory#createSymmetricCryptoSecuritySetting(SymmetricCryptoCardTransactionManagerFactory)}.
  *
  * @since 2.0.0
  */
@@ -184,7 +184,7 @@ public interface SymmetricCryptoSecuritySetting {
    *
    * @throws CryptoException If an error occurred when computing a crypto operation.
    * @throws CryptoIOException If a communication error with the crypto module (e.g. timeout with
-   *     the reader or the computing unit, network error, etc...).
+   *     the reader or the computing unit, network error, etc.).
    * @since 2.0.0
    */
   void initCryptoContextForNextTransaction();
