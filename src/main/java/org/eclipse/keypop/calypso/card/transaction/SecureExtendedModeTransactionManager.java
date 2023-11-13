@@ -1,4 +1,4 @@
-/*
+/* **************************************************************************************
  * Copyright (c) 2023 Calypso Networks Association https://calypsonet.org/
  *
  * This file is part of Eclipse Keypop.
@@ -7,7 +7,7 @@
  * it under the terms of the MIT License. A copy of the License is located at
  *
  * http://opensource.org/licenses/MIT
- */
+ ************************************************************************************** */
 package org.eclipse.keypop.calypso.card.transaction;
 
 import org.eclipse.keypop.calypso.card.CalypsoCardApiFactory;
@@ -15,8 +15,8 @@ import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.reader.CardReader;
 
 /**
- * Manager of card transactions secured by "symmetric" key cryptographic algorithms, adding
- * additional operations available only for "Calypso Prime Extended" products.
+ * Manager of card transactions secured by symmetric key cryptographic algorithms, adding additional
+ * operations available only for "Calypso Prime Extended" products.
  *
  * <p>See {@link SecureSymmetricCryptoTransactionManager} parent interface for more information and
  * details of available card operations.

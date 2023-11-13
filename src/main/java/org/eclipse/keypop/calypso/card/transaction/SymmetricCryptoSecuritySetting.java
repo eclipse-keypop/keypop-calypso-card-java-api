@@ -1,4 +1,4 @@
-/*
+/* **************************************************************************************
  * Copyright (c) 2023 Calypso Networks Association https://calypsonet.org/
  *
  * This file is part of Eclipse Keypop.
@@ -7,19 +7,19 @@
  * it under the terms of the MIT License. A copy of the License is located at
  *
  * http://opensource.org/licenses/MIT
- */
+ ************************************************************************************** */
 package org.eclipse.keypop.calypso.card.transaction;
 
 import org.eclipse.keypop.calypso.card.CalypsoCardApiFactory;
 import org.eclipse.keypop.calypso.card.WriteAccessLevel;
-import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoTransactionManagerFactory;
+import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoCardTransactionManagerFactory;
 
 /**
  * Security setting for a Calypso card transaction secured by "symmetric" key cryptographic
  * algorithms (e.g. SAM).
  *
  * <p>An instance of this interface can be obtained via the method {@link
- * CalypsoCardApiFactory#createSymmetricCryptoSecuritySetting(SymmetricCryptoTransactionManagerFactory)}.
+ * CalypsoCardApiFactory#createSymmetricCryptoSecuritySetting(SymmetricCryptoCardTransactionManagerFactory)}.
  *
  * @since 2.0.0
  */
@@ -169,4 +169,23 @@ public interface SymmetricCryptoSecuritySetting {
    * @since 1.0.0
    */
   SymmetricCryptoSecuritySetting setPinModificationCipheringKey(byte kif, byte kvc);
+
+  /**
+   * Prepares the cryptographic module for the next transaction by anticipating all security context
+   * configuration operations.
+   *
+   * <p>This feature is only useful if the currently allocated cryptographic module will be used for
+   * the next transaction. It is particularly relevant to optimize the transaction time in a
+   * ticketing context of user card validation.
+   *
+   * <p>For this optimization to be effective, it is necessary to call this method at the very end
+   * of the current transaction, i.e. <u>after</u> having notified the user of the access right
+   * (e.g. after opening the gate).
+   *
+   * @throws CryptoException If an error occurred when computing a crypto operation.
+   * @throws CryptoIOException If a communication error with the crypto module (e.g. timeout with
+   *     the reader or the computing unit, network error, etc.).
+   * @since 2.0.0
+   */
+  void initCryptoContextForNextTransaction();
 }

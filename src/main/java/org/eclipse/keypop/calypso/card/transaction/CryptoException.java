@@ -8,22 +8,23 @@
  *
  * http://opensource.org/licenses/MIT
  ************************************************************************************** */
-package org.eclipse.keypop.calypso.card;
+package org.eclipse.keypop.calypso.card.transaction;
 
 /**
- * API properties.
+ * Indicates that an error occurred when computing a crypto operation.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
-public final class CalypsoCardApiProperties {
+public final class CryptoException extends RuntimeException {
 
   /**
-   * API version: {@value}
+   * Encapsulates a lower level exception.
    *
-   * @since 1.0.0
+   * @param message Message to identify the exception context.
+   * @param cause The cause.
+   * @since 2.0.0
    */
-  public static final String VERSION = "2.0";
-
-  /** Private constructor */
-  private CalypsoCardApiProperties() {}
+  public CryptoException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }

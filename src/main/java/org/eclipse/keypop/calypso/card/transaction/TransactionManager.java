@@ -1,4 +1,4 @@
-/*
+/* **************************************************************************************
  * Copyright (c) 2023 Calypso Networks Association https://calypsonet.org/
  *
  * This file is part of Eclipse Keypop.
@@ -7,7 +7,7 @@
  * it under the terms of the MIT License. A copy of the License is located at
  *
  * http://opensource.org/licenses/MIT
- */
+ ************************************************************************************** */
 package org.eclipse.keypop.calypso.card.transaction;
 
 import java.util.List;
@@ -324,6 +324,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @param recordData The new record data to write.
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareAppendRecord(byte sfi, byte[] recordData);
@@ -343,6 +345,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *     left unchanged.
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData);
@@ -362,6 +366,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *     beyond length are left unchanged.
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData);
@@ -381,6 +387,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @return The current instance.
    * @throws UnsupportedOperationException If this command is not supported by this card.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.1.0
    */
   T prepareUpdateBinary(byte sfi, int offset, byte[] data);
@@ -401,6 +409,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @return The current instance.
    * @throws UnsupportedOperationException If this command is not supported by this card.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.1.0
    */
   T prepareWriteBinary(byte sfi, int offset, byte[] data);
@@ -421,6 +431,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *     [FFFFFFh])
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareIncreaseCounter(byte sfi, int counterNumber, int incValue);
@@ -440,6 +452,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range or if the map
    *     is null or empty.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.1.0
    */
   T prepareIncreaseCounters(byte sfi, Map<Integer, Integer> counterNumberToIncValueMap);
@@ -460,6 +474,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *     [FFFFFFh])
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareDecreaseCounter(byte sfi, int counterNumber, int decValue);
@@ -479,6 +495,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range or if the map
    *     is null or empty.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.1.0
    */
   T prepareDecreaseCounters(byte sfi, Map<Integer, Integer> counterNumberToDecValueMap);
@@ -512,6 +530,8 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
    * @throws IllegalStateException If the current counter value is unknown.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSetCounter(byte sfi, int counterNumber, int newValue);
@@ -601,13 +621,13 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
    * @throws InconsistentDataException If inconsistent data have been detected.
    * @throws UnauthorizedKeyException If the card requires an unauthorized session key.
-   * @throws SessionBufferOverflowException If a secure session is open and multiple session mode is
-   *     disabled and the session buffer capacity is not sufficient.
-   * @throws CardMacNotVerifiableException If a secure session is open and multiple session mode is
-   *     enabled and an intermediate session is correctly closed but the cryptographic module is no
-   *     longer available to verify the card MAC.
-   * @throws InvalidCardMacException If a secure session is open and multiple session mode is
-   *     enabled and an intermediate session is correctly closed but the card MAC is incorrect.
+   * @throws CardSignatureNotVerifiableException If a secure session is open and multiple session
+   *     mode is enabled and an intermediate session is correctly closed but the cryptographic
+   *     module is no longer available to verify the card MAC.
+   * @throws InvalidCardSignatureException If the card signature is incorrect. In the case of a card
+   *     transaction secured by "symmetrical" cryptography (e.g. SAM), this indicates that the card
+   *     has correctly closed the secure session, but the card session is not authentic because the
+   *     MAC of the card is incorrect.
    * @throws SelectFileException If a "Select File" prepared card command indicated that the file
    *     was not found.
    * @since 1.6.0

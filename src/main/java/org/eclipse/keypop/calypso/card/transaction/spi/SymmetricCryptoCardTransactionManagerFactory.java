@@ -8,22 +8,12 @@
  *
  * http://opensource.org/licenses/MIT
  ************************************************************************************** */
-package org.eclipse.keypop.calypso.card;
+package org.eclipse.keypop.calypso.card.transaction.spi;
 
 /**
- * API properties.
+ * Card transaction manager factory provided by crypto extensions to secure Calypso card
+ * transactions secured by "symmetric" key cryptographic algorithms (e.g. SAM).
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
-public final class CalypsoCardApiProperties {
-
-  /**
-   * API version: {@value}
-   *
-   * @since 1.0.0
-   */
-  public static final String VERSION = "2.0";
-
-  /** Private constructor */
-  private CalypsoCardApiProperties() {}
-}
+public interface SymmetricCryptoCardTransactionManagerFactory {}

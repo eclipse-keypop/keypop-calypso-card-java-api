@@ -1,4 +1,4 @@
-/*
+/* **************************************************************************************
  * Copyright (c) 2023 Calypso Networks Association https://calypsonet.org/
  *
  * This file is part of Eclipse Keypop.
@@ -7,7 +7,7 @@
  * it under the terms of the MIT License. A copy of the License is located at
  *
  * http://opensource.org/licenses/MIT
- */
+ ************************************************************************************** */
 package org.eclipse.keypop.calypso.card.transaction;
 
 import org.eclipse.keypop.calypso.card.WriteAccessLevel;
@@ -97,6 +97,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvReload(int amount, byte[] date, byte[] time, byte[] free);
@@ -123,6 +125,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvReload(int amount);
@@ -156,6 +160,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvDebit(int amount, byte[] date, byte[] time);
@@ -187,6 +193,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *       <li>The command and the SV operation are not consistent.
    *     </ul>
    *
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareSvDebit(int amount);
@@ -201,6 +209,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    * CalypsoCard#isDfInvalidated()} method.
    *
    * @throws IllegalStateException If the card is already invalidated.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @return The current instance.
    * @since 1.0.0
    */
@@ -217,6 +227,8 @@ public interface SecureSymmetricCryptoTransactionManager<
    *
    * @return The current instance.
    * @throws IllegalStateException If the card is not invalidated.
+   * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
+   *     size and the multiple session is not allowed.
    * @since 1.0.0
    */
   T prepareRehabilitate();
@@ -245,29 +257,4 @@ public interface SecureSymmetricCryptoTransactionManager<
    * @since 1.6.0
    */
   T prepareChangeKey(int keyIndex, byte newKif, byte newKvc, byte issuerKif, byte issuerKvc);
-
-  /**
-   * Prepares the cryptographic module for the next transaction by anticipating all security context
-   * configuration operations.
-   *
-   * <p>This feature is only useful if the currently allocated cryptographic module will be used for
-   * the next transaction. It is particularly relevant to optimize the transaction time in a
-   * ticketing context of user card validation.
-   *
-   * <p>For this optimization to be effective, it is necessary to call this method at the very end
-   * of the current transaction, i.e. <u>after</u> having notified the user of the access right
-   * (e.g. after opening the gate).
-   *
-   * @throws IllegalStateException In the following cases:
-   *     <ul>
-   *       <li>No {@link SymmetricCryptoSecuritySetting} is available
-   *       <li>Unprocessed card commands are pending
-   *     </ul>
-   *
-   * @throws ReaderIOException If a communication error with the cryptographic module reader occurs.
-   * @throws CryptoIOException If a communication error with the cryptographic module occurs.
-   * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
-   * @since 1.8.0
-   */
-  void initCryptoContextForNextTransaction();
 }
