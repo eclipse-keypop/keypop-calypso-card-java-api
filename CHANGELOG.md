@@ -237,7 +237,8 @@ GitHub repository.
 ## [1.0.0] - 2021-10-06
 This is the initial release.
 
-[unreleased]: https://github.com/calypsonet/calypsonet-terminal-calypso-java-api/compare/1.8.0...HEAD
+[unreleased]: https://github.com/eclipse-keypop/keypop-calypso-card-java-api/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/eclipse-keypop/keypop-calypso-card-java-api/releases/tag/2.0.0
 [1.8.0]: https://github.com/calypsonet/calypsonet-terminal-calypso-java-api/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/calypsonet/calypsonet-terminal-calypso-java-api/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/calypsonet/calypsonet-terminal-calypso-java-api/compare/1.5.0...1.6.0
