@@ -41,5 +41,23 @@ public enum GetDataTag {
    *
    * @since 1.1.0
    */
-  TRACEABILITY_INFORMATION
+  TRACEABILITY_INFORMATION,
+  /**
+   * Card public key.
+   *
+   * @since 2.1.0
+   */
+  CARD_PUBLIC_KEY,
+  /**
+   * Card certificate.
+   *
+   * @since 2.1.0
+   */
+  CARD_CERTIFICATE,
+  /**
+   * Certification Authority Certificate.
+   *
+   * @since 2.1.0
+   */
+  CA_CERTIFICATE
 }

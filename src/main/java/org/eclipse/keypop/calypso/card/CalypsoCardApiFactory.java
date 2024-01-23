@@ -11,11 +11,8 @@ package org.eclipse.keypop.calypso.card;
 
 import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
-import org.eclipse.keypop.calypso.card.transaction.FreeTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SearchCommandData;
-import org.eclipse.keypop.calypso.card.transaction.SecureExtendedModeTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SecureRegularModeTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySetting;
+import org.eclipse.keypop.calypso.card.transaction.*;
+import org.eclipse.keypop.calypso.card.transaction.spi.AsymmetricCryptoCardTransactionManagerFactory;
 import org.eclipse.keypop.calypso.card.transaction.spi.SymmetricCryptoCardTransactionManagerFactory;
 import org.eclipse.keypop.reader.CardReader;
 
@@ -45,6 +42,18 @@ public interface CalypsoCardApiFactory {
    */
   SymmetricCryptoSecuritySetting createSymmetricCryptoSecuritySetting(
       SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory);
+
+  /**
+   * Returns a new instance of {@link AsymmetricCryptoSecuritySetting}.
+   *
+   * @param cryptoCardTransactionManagerFactory The factory of the crypto card transaction manager
+   *     to be used.
+   * @return A new instance of {@link AsymmetricCryptoSecuritySetting}.
+   * @throws IllegalArgumentException If the factory is null or invalid.
+   * @since 2.1.0
+   */
+  AsymmetricCryptoSecuritySetting createAsymmetricCryptoSecuritySetting(
+      AsymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory);
 
   /**
    * Returns a new instance of {@link FreeTransactionManager}.
@@ -82,6 +91,31 @@ public interface CalypsoCardApiFactory {
    */
   SecureExtendedModeTransactionManager createSecureExtendedModeTransactionManager(
       CardReader cardReader, CalypsoCard card, SymmetricCryptoSecuritySetting securitySetting);
+
+  /**
+   * Returns a new instance of {@link SecurePkiModeTransactionManager}.
+   *
+   * @param cardReader The card reader to be used.
+   * @param card The selected card on which to operate the transaction.
+   * @param securitySetting The security setting to be used.
+   * @return A new instance of {@link SecurePkiModeTransactionManager}.
+   * @throws IllegalArgumentException If one of the parameters is null.
+   * @since 2.1.0
+   */
+  SecurePkiModeTransactionManager createSecurePkiModeTransactionManager(
+      CardReader cardReader, CalypsoCard card, AsymmetricCryptoSecuritySetting securitySetting);
+
+  /**
+   * Returns a new instance of {@link PkiPersonalizationTransactionManager}.
+   *
+   * @param cardReader The card reader to be used.
+   * @param card The selected card on which to operate the transaction.
+   * @return A new instance of {@link PkiPersonalizationTransactionManager}.
+   * @throws IllegalArgumentException If one of the parameters is null.
+   * @since 2.1.0
+   */
+  PkiPersonalizationTransactionManager createPkiPersonalizationTransactionManager(
+      CardReader cardReader, CalypsoCard card);
 
   /**
    * Returns a new instance of {@link SearchCommandData}.

@@ -253,9 +253,8 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    * </ul>
    *
    * @return The current instance.
-   * @throws IllegalArgumentException If writeAccessLevel is null.
    * @throws IllegalStateException If "Pre-Open" command is already prepared.
-   * @since 2.0.0
+   * @since 2.1.0
    */
-  // CalypsoCardSelectionExtension preparePreOpenSecureSessionInPkiMode();
+  CalypsoCardSelectionExtension preparePreOpenSecureSessionInPkiMode();
 }

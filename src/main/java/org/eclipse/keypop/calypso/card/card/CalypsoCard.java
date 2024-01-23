@@ -187,6 +187,30 @@ public interface CalypsoCard extends IsoSmartCard {
   byte[] getTraceabilityInformation();
 
   /**
+   * Gets the card public key as return by the card.
+   *
+   * @return A byte array containing the key value.
+   * @since 2.1.0
+   */
+  byte[] getCardPublicKey();
+
+  /**
+   * Gets the card certificate as return by the card.
+   *
+   * @return A byte array containing the card certificate.
+   * @since 2.1.0
+   */
+  byte[] getCardCertificate();
+
+  /**
+   * Gets the CA certificate as return by the card.
+   *
+   * @return A byte array containing the CA certificate.
+   * @since 2.1.0
+   */
+  byte[] getCaCertificate();
+
+  /**
    * Returns the metadata of the current DF.
    *
    * @return Null if is not set.
