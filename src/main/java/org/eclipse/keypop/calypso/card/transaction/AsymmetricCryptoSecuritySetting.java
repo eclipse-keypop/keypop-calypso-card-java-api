@@ -26,7 +26,7 @@ public interface AsymmetricCryptoSecuritySetting {
    * Adds a PCA Certificate.
    *
    * @param pcaCertificate The PCA Certificate to add.
-   * @return this
+   * @return The current instance.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addPcaCertificate(PcaCertificate pcaCertificate);
@@ -35,7 +35,7 @@ public interface AsymmetricCryptoSecuritySetting {
    * Adds a CA Certificate.
    *
    * @param caCertificate The CA Certificate to add.
-   * @return this
+   * @return The current instance.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCaCertificate(CaCertificate caCertificate);
@@ -44,7 +44,7 @@ public interface AsymmetricCryptoSecuritySetting {
    * Adds a CA Certificate factory.
    *
    * @param caCertificateFactory The CA Certificate factory to add.
-   * @return this
+   * @return The current instance.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCaCertificateFactory(
@@ -54,7 +54,7 @@ public interface AsymmetricCryptoSecuritySetting {
    * Adds a Card Certificate factory.
    *
    * @param cardCertificateFactory The Card Certificate factory to add.
-   * @return this
+   * @return The current instance.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCardCertificateFactory(

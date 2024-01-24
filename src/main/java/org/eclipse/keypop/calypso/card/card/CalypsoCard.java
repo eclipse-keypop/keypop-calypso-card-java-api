@@ -189,7 +189,7 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the card public key as return by the card.
    *
-   * @return A byte array containing the key value.
+   * @return A 64-byte byte array.
    * @since 2.1.0
    */
   byte[] getCardPublicKey();
@@ -197,7 +197,7 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the card certificate as return by the card.
    *
-   * @return A byte array containing the card certificate.
+   * @return A non-empty byte array.
    * @since 2.1.0
    */
   byte[] getCardCertificate();
@@ -205,7 +205,7 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the CA certificate as return by the card.
    *
-   * @return A byte array containing the CA certificate.
+   * @return A non-empty byte array.
    * @since 2.1.0
    */
   byte[] getCaCertificate();
