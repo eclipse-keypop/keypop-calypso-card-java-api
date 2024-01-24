@@ -256,5 +256,5 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    * @throws IllegalStateException If "Pre-Open" command is already prepared.
    * @since 2.1.0
    */
-  CalypsoCardSelectionExtension preparePreOpenSecureSessionInPkiMode();
+  // CalypsoCardSelectionExtension preparePreOpenSecureSessionInPkiMode();
 }
