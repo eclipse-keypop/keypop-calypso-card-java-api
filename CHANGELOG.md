@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Methods  `createAsymmetricCryptoSecuritySetting(AsymmetricCryptoCardTransactionManagerFactory 
                                                   cryptoCardTransactionManagerFactory)`
            `createSecurePkiModeTransactionManager(CardReader cardReader, CalypsoCard card, 
-                                                   AsymmetricCryptoSecuritySetting securitySetting)`
+                                                  AsymmetricCryptoSecuritySetting securitySetting)`
            `createPkiPersonalizationTransactionManager(CardReader cardReader, CalypsoCard card)`.
 - Enum items `GetDataTag.CARD_PUBLIC_KEY`, `GetDataTag.CARD_CERTIFICATE`, `GetDataTag.CA_CERTIFICATE`.
 
