@@ -15,8 +15,8 @@ import org.eclipse.keypop.calypso.card.transaction.spi.CardCertificateFactory;
 import org.eclipse.keypop.calypso.card.transaction.spi.PcaCertificate;
 
 /**
- * An interface for setting asymmetric crypto security settings. Provides methods to add PCA
- * certificate, CA certificate and their factories.
+ * Security setting for a Calypso card transaction secured by "asymmetric" key cryptographic
+ * algorithms (PKI).
  *
  * @since 2.1.0
  */
