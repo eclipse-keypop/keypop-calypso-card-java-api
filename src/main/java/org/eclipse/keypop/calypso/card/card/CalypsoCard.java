@@ -14,10 +14,7 @@ import java.util.Set;
 import org.eclipse.keypop.calypso.card.GetDataTag;
 import org.eclipse.keypop.calypso.card.SelectFileControl;
 import org.eclipse.keypop.calypso.card.WriteAccessLevel;
-import org.eclipse.keypop.calypso.card.transaction.SecureSymmetricCryptoTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SvAction;
-import org.eclipse.keypop.calypso.card.transaction.SvOperation;
-import org.eclipse.keypop.calypso.card.transaction.TransactionManager;
+import org.eclipse.keypop.calypso.card.transaction.*;
 import org.eclipse.keypop.reader.selection.spi.IsoSmartCard;
 
 /**
@@ -187,25 +184,34 @@ public interface CalypsoCard extends IsoSmartCard {
   byte[] getTraceabilityInformation();
 
   /**
-   * Gets the card public key as return by the card.
+   * Returns the card public key.
    *
-   * @return A 64-byte byte array.
+   * @return An empty array if the public key is not available.
+   * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
+   * @see TransactionManager#prepareGetData(GetDataTag)
+   * @see SecurePkiModeTransactionManager#prepareOpenSecureSession()
    * @since 2.1.0
    */
   byte[] getCardPublicKey();
 
   /**
-   * Gets the card certificate as return by the card.
+   * Returns the card certificate.
    *
-   * @return A non-empty byte array.
+   * @return An empty array if the public key is not available.
+   * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
+   * @see TransactionManager#prepareGetData(GetDataTag)
+   * @see SecurePkiModeTransactionManager#prepareOpenSecureSession()
    * @since 2.1.0
    */
   byte[] getCardCertificate();
 
   /**
-   * Gets the CA certificate as return by the card.
+   * Returns the CA certificate.
    *
-   * @return A non-empty byte array.
+   * @return An empty array if the public key is not available.
+   * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
+   * @see TransactionManager#prepareGetData(GetDataTag)
+   * @see SecurePkiModeTransactionManager#prepareOpenSecureSession()
    * @since 2.1.0
    */
   byte[] getCaCertificate();

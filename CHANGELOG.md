@@ -6,10 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- SPI classes `PcaCertificate`, `CaCertificate`, `CaCertificateFactory`, `CardCertificateFactory` to allow PKI 
+- SPI interfaces `PcaCertificate`, `CaCertificate`, `CaCertificateFactory`, `CardCertificateFactory` to allow PKI 
   certificates management.
-- `AsymmetricCryptoSecuritySetting`, `SecurePkiModeTransactionManager` classes to manage secure session in PKI mode.
-- `PkiPersonalizationTransactionManager` class to manage CA and card certificates.
+- `AsymmetricCryptoSecuritySetting`, `SecurePkiModeTransactionManager` interfaces to manage secure session in PKI mode.
+- `PkiPersonalizationTransactionManager` interface to manage CA and card certificates.
 - Methods `CalypsoCard.getCardPublicKey()`, `CalypsoCard.getCardCertificate()`, `CalypsoCard.getCaCertificate()` return 
   the corresponding data retrieved from the card.
 - Methods  `createAsymmetricCryptoSecuritySetting(AsymmetricCryptoCardTransactionManagerFactory 
@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
            `createSecurePkiModeTransactionManager(CardReader cardReader, CalypsoCard card, 
                                                   AsymmetricCryptoSecuritySetting securitySetting)`
            `createPkiPersonalizationTransactionManager(CardReader cardReader, CalypsoCard card)`.
-- Enum items `GetDataTag.CARD_PUBLIC_KEY`, `GetDataTag.CARD_CERTIFICATE`, `GetDataTag.CA_CERTIFICATE`.
+- Added `CARD_PUBLIC_KEY`, `CARD_CERTIFICATE`, `CA_CERTIFICATE` entries to `GetDataTag` enum.
 
 ## [2.0.0] - 2023-11-27
 :warning: The project has been migrated from the [Calypsonet Terminal Calypso API](https://github.com/calypsonet/calypsonet-terminal-calypso-java-api)
