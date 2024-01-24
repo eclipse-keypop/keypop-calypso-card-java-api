@@ -23,38 +23,56 @@ import org.eclipse.keypop.calypso.card.transaction.spi.PcaCertificate;
 public interface AsymmetricCryptoSecuritySetting {
 
   /**
-   * Adds a PCA Certificate.
+   * Registers a self-signed PCA certificate.
    *
-   * @param pcaCertificate The PCA Certificate to add.
+   * @param pcaCertificate The PCA certificate to add.
    * @return The current instance.
+   * @throws IllegalArgumentException If the argument is null or invalid.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addPcaCertificate(PcaCertificate pcaCertificate);
 
   /**
-   * Adds a CA Certificate.
+   * Registers a CA certificate.
    *
-   * @param caCertificate The CA Certificate to add.
+   * <p>Preloading a CA certificate avoids having to read it from the card.
+   *
+   * <p>Please note: the certificate signature is systematically verified using the issuer's public
+   * key. The issuer's certificate must be loaded first.
+   *
+   * @param caCertificate The CA certificate to add.
    * @return The current instance.
+   * @throws IllegalArgumentException If the argument is null or invalid.
+   * @see #addPcaCertificate(PcaCertificate)
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCaCertificate(CaCertificate caCertificate);
 
   /**
-   * Adds a CA Certificate factory.
+   * Registers a CA certificate factory.
    *
-   * @param caCertificateFactory The CA Certificate factory to add.
+   * <p>The factory provides the means to build a {@link CaCertificate} from the raw data read from
+   * the card.
+   *
+   * <p>This factory will only be used if the CA certificate is not already available.
+   *
+   * @param caCertificateFactory The CA certificate factory to add.
    * @return The current instance.
+   * @throws IllegalArgumentException If the argument is null or invalid.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCaCertificateFactory(
       CaCertificateFactory caCertificateFactory);
 
   /**
-   * Adds a Card Certificate factory.
+   * Registers a Card Certificate factory.
+   *
+   * <p>The factory provides the means to build a card certificate from the raw data read from the
+   * card.
    *
    * @param cardCertificateFactory The Card Certificate factory to add.
    * @return The current instance.
+   * @throws IllegalArgumentException If the argument is null or invalid.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCardCertificateFactory(
