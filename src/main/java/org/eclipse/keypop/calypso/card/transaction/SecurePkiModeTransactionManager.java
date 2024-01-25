@@ -23,9 +23,6 @@ public interface SecurePkiModeTransactionManager
   /**
    * Schedules the execution of an "Open Secure Session" command in PKI mode.
    *
-   * <p>The secure session will be opened in PKI mode, only reads and writes to files with "always"
-   * access conditions will be allowed.
-   *
    * <p>Note that if the next prepared command is a "Read One Record" or "Read One Or More
    * Counters", then it will by default be merged with the "Open Secure Session" command for
    * optimization purposes except if the "pre-open" mode is active.
