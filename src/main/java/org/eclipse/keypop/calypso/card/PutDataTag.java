@@ -1,5 +1,5 @@
 /* ******************************************************************************
- * Copyright (c) 2023 Calypso Networks Association https://calypsonet.org/
+ * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/
  *
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -14,7 +14,7 @@ package org.eclipse.keypop.calypso.card;
  *
  * <p>May not be applicable to all products.
  *
- * @since 1.0.0
+ * @since 2.1.0
  */
 public enum PutDataTag {
 
