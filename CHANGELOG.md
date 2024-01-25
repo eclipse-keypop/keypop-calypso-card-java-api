@@ -5,6 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Support for PKI cards
+  - New APIs dedicated to the card personalization: 
+    - added `PutDataTag` enum
+    - added `putDataTag(PutDataTag tag, byte[] data)` method to `TransactionManager`
+    - added `generateAsymmetricKeyPair()` method to `TransactionManager`
+    - added `CARD_PUBLIC_KEY`, `CARD_CERTIFICATE`, `CA_CERTIFICATE` entries to `GetDataTag` enum
+    - added `getCardPublicKey()`, `getCardCertificate()`, `getCaCertificate()` methods to `CalypsoCard`
+  - New APIs/SPIs dedicated to the card secure transaction in PKI mode:
+    - added SPIs to operate the involved certificates with an external library: `PcaCertificate`, 
+      `CaCertificate`, `CaCertificateFactory`, `CardCertificateFactory`
+    - added `AsymmetricCryptoSecuritySetting` interface
+    - added `createAsymmetricCryptoSecuritySetting(...)` method to `CalypsoCardApiFactory`
+    - added `SecurePkiModeTransactionManager` interface
+    - added `createSecurePkiModeTransactionManager(...)` method to `CalypsoCardApiFactory`
+    - added `InvalidCertificateException`
 
 ## [2.0.0] - 2023-11-27
 :warning: The project has been migrated from the [Calypsonet Terminal Calypso API](https://github.com/calypsonet/calypsonet-terminal-calypso-java-api)

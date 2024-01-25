@@ -14,10 +14,7 @@ import java.util.Set;
 import org.eclipse.keypop.calypso.card.GetDataTag;
 import org.eclipse.keypop.calypso.card.SelectFileControl;
 import org.eclipse.keypop.calypso.card.WriteAccessLevel;
-import org.eclipse.keypop.calypso.card.transaction.SecureSymmetricCryptoTransactionManager;
-import org.eclipse.keypop.calypso.card.transaction.SvAction;
-import org.eclipse.keypop.calypso.card.transaction.SvOperation;
-import org.eclipse.keypop.calypso.card.transaction.TransactionManager;
+import org.eclipse.keypop.calypso.card.transaction.*;
 import org.eclipse.keypop.reader.selection.spi.IsoSmartCard;
 
 /**
@@ -185,6 +182,39 @@ public interface CalypsoCard extends IsoSmartCard {
    * @since 1.1.0
    */
   byte[] getTraceabilityInformation();
+
+  /**
+   * Returns the card public key.
+   *
+   * @return An empty array if the public key is not available.
+   * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
+   * @see TransactionManager#prepareGetData(GetDataTag)
+   * @see SecurePkiModeTransactionManager#prepareOpenSecureSession()
+   * @since 2.1.0
+   */
+  byte[] getCardPublicKey();
+
+  /**
+   * Returns the card certificate.
+   *
+   * @return An empty array if the public key is not available.
+   * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
+   * @see TransactionManager#prepareGetData(GetDataTag)
+   * @see SecurePkiModeTransactionManager#prepareOpenSecureSession()
+   * @since 2.1.0
+   */
+  byte[] getCardCertificate();
+
+  /**
+   * Returns the CA certificate.
+   *
+   * @return An empty array if the public key is not available.
+   * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
+   * @see TransactionManager#prepareGetData(GetDataTag)
+   * @see SecurePkiModeTransactionManager#prepareOpenSecureSession()
+   * @since 2.1.0
+   */
+  byte[] getCaCertificate();
 
   /**
    * Returns the metadata of the current DF.

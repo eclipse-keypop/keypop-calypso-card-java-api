@@ -1,5 +1,5 @@
 /* ******************************************************************************
- * Copyright (c) 2023 Calypso Networks Association https://calypsonet.org/
+ * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/
  *
  * This program and the accompanying materials are made available under the
  * terms of the MIT License which is available at
@@ -10,9 +10,11 @@
 package org.eclipse.keypop.calypso.card.transaction.spi;
 
 /**
- * Card transaction manager factory provided by crypto extensions to secure Calypso card
- * transactions secured by asymmetric key cryptographic algorithms (PKI).
+ * Marker interface for CA certificate.
  *
- * @since 2.0.0
+ * <p>The implementation of this interface is provided by the Keypop extensions for asymmetric
+ * cryptography.
+ *
+ * @since 2.1.0
  */
-public interface AsymmetricCryptoCardTransactionManagerFactory {}
+public interface CaCertificate {}

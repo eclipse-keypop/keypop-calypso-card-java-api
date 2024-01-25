@@ -12,6 +12,7 @@ package org.eclipse.keypop.calypso.card.transaction;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.keypop.calypso.card.GetDataTag;
+import org.eclipse.keypop.calypso.card.PutDataTag;
 import org.eclipse.keypop.calypso.card.SelectFileControl;
 import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.calypso.card.card.ElementaryFile;
@@ -77,13 +78,13 @@ public interface TransactionManager<T extends TransactionManager<T>> {
   T prepareSelectFile(SelectFileControl selectFileControl);
 
   /**
-   * Schedules the execution of a "Get Data" command to retrieve the data indicated by the provided
-   * tag.
+   * Schedules the execution of one or more "Get Data" command to retrieve the data indicated by the
+   * provided data type.
    *
    * <p>Data will be available in {@link CalypsoCard} using the {@link ElementaryFile#getHeader()}
    * or {@link CalypsoCard#getDirectoryHeader()} methods, depending on the provided tag.
    *
-   * @param tag The tag to use.
+   * @param tag The data type.
    * @return The current instance.
    * @throws UnsupportedOperationException If the Get Data command with the provided tag is not
    *     supported.
@@ -91,6 +92,20 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @since 1.0.0
    */
   T prepareGetData(GetDataTag tag);
+
+  /**
+   * Schedules the execution of one or more "Put Data" command to inject the provided data
+   * associated with the provided data type.
+   *
+   * @param tag The data type.
+   * @param data The data to inject.
+   * @return The current instance.
+   * @throws UnsupportedOperationException If the Put Data command with the provided tag is not
+   *     supported.
+   * @throws IllegalArgumentException If tag is null or data is empty.
+   * @since 2.1.0
+   */
+  T preparePutData(PutDataTag tag, byte[] data);
 
   /**
    * Schedules the execution of a "Read Records" command to read a single record from the indicated
@@ -599,6 +614,17 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @since 1.6.0
    */
   T prepareChangePin(byte[] newPin);
+
+  /**
+   * Schedules the execution of a "Generate Asymmetric Key Pair" command.
+   *
+   * <p>After the execution, the generated key pair will be stored internally into the card. The
+   * public part can be retrieved via {@link #prepareGetData(GetDataTag)}.
+   *
+   * @return The current instance.
+   * @since 2.1.0
+   */
+  T prepareGenerateAsymmetricKeyPair();
 
   /**
    * Processes all previously prepared commands and closes the physical channel if requested.
