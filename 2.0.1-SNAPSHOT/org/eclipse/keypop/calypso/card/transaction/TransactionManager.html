@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -129,7 +129,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>All Known Subinterfaces:</dt>
-<dd><code><a href="FreeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">FreeTransactionManager</a></code>, <code><a href="SecureExtendedModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureExtendedModeTransactionManager</a></code>, <code><a href="SecureRegularModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureRegularModeTransactionManager</a></code>, <code><a href="SecureSymmetricCryptoTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureSymmetricCryptoTransactionManager</a>&lt;T&gt;</code>, <code><a href="SecureTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureTransactionManager</a>&lt;T&gt;</code></dd>
+<dd><code><a href="FreeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">FreeTransactionManager</a></code>, <code><a href="SecureExtendedModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureExtendedModeTransactionManager</a></code>, <code><a href="SecurePkiModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecurePkiModeTransactionManager</a></code>, <code><a href="SecureRegularModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureRegularModeTransactionManager</a></code>, <code><a href="SecureSymmetricCryptoTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureSymmetricCryptoTransactionManager</a>&lt;T&gt;</code>, <code><a href="SecureTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureTransactionManager</a>&lt;T&gt;</code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">TransactionManager&lt;T extends TransactionManager&lt;T&gt;&gt;</span></pre>
@@ -232,13 +232,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareGetData(org.eclipse.keypop.calypso.card.GetDataTag)">prepareGetData</a></span>&#8203;(<a href="../GetDataTag.html" title="enum in org.eclipse.keypop.calypso.card">GetDataTag</a>&nbsp;tag)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareGenerateAsymmetricKeyPair()">prepareGenerateAsymmetricKeyPair</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Schedules the execution of a "Get Data" command to retrieve the data indicated by the provided
- tag.</div>
+<div class="block">Schedules the execution of a "Generate Asymmetric Key Pair" command.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareGetData(org.eclipse.keypop.calypso.card.GetDataTag)">prepareGetData</a></span>&#8203;(<a href="../GetDataTag.html" title="enum in org.eclipse.keypop.calypso.card">GetDataTag</a>&nbsp;tag)</code></th>
+<td class="colLast">
+<div class="block">Schedules the execution of one or more "Get Data" command to retrieve the data indicated by the
+ provided data type.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareIncreaseCounter(byte,int,int)">prepareIncreaseCounter</a></span>&#8203;(byte&nbsp;sfi,
                       int&nbsp;counterNumber,
@@ -247,7 +254,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Schedules the execution of an "Increase" command to increase the target counter.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareIncreaseCounters(byte,java.util.Map)">prepareIncreaseCounters</a></span>&#8203;(byte&nbsp;sfi,
                        java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;counterNumberToIncValueMap)</code></th>
@@ -256,7 +263,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  increase multiple target counters at the same time.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#preparePutData(org.eclipse.keypop.calypso.card.PutDataTag,byte%5B%5D)">preparePutData</a></span>&#8203;(<a href="../PutDataTag.html" title="enum in org.eclipse.keypop.calypso.card">PutDataTag</a>&nbsp;tag,
+              byte[]&nbsp;data)</code></th>
+<td class="colLast">
+<div class="block">Schedules the execution of one or more "Put Data" command to inject the provided data
+ associated with the provided data type.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareReadBinary(byte,int,int)">prepareReadBinary</a></span>&#8203;(byte&nbsp;sfi,
                  int&nbsp;offset,
@@ -266,7 +282,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  indicated "binary" EF.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareReadCounter(byte,int)">prepareReadCounter</a></span>&#8203;(byte&nbsp;sfi,
                   int&nbsp;nbCountersToRead)</code></th>
@@ -275,7 +291,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  which should be a "counter" file.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareReadRecord(byte,int)">prepareReadRecord</a></span>&#8203;(byte&nbsp;sfi,
                  int&nbsp;recordNumber)</code></th>
@@ -284,7 +300,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  EF.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareReadRecords(byte,int,int,int)">prepareReadRecords</a></span>&#8203;(byte&nbsp;sfi,
                   int&nbsp;fromRecordNumber,
@@ -295,7 +311,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  indicated EF.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareReadRecordsPartially(byte,int,int,int,int)">prepareReadRecordsPartially</a></span>&#8203;(byte&nbsp;sfi,
                            int&nbsp;fromRecordNumber,
@@ -307,7 +323,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  of multiple records of the indicated EF.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareSearchRecords(org.eclipse.keypop.calypso.card.transaction.SearchCommandData)">prepareSearchRecords</a></span>&#8203;(<a href="SearchCommandData.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SearchCommandData</a>&nbsp;data)</code></th>
 <td class="colLast">
@@ -315,7 +331,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  the indicated EF, from a given record to the last record of the file.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareSelectFile(short)">prepareSelectFile</a></span>&#8203;(short&nbsp;lid)</code></th>
 <td class="colLast">
@@ -323,7 +339,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  DF.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareSelectFile(org.eclipse.keypop.calypso.card.SelectFileControl)">prepareSelectFile</a></span>&#8203;(<a href="../SelectFileControl.html" title="enum in org.eclipse.keypop.calypso.card">SelectFileControl</a>&nbsp;selectFileControl)</code></th>
 <td class="colLast">
@@ -331,7 +347,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  by the ISO standard.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareSetCounter(byte,int,int)">prepareSetCounter</a></span>&#8203;(byte&nbsp;sfi,
                  int&nbsp;counterNumber,
@@ -341,14 +357,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  counter.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareSvReadAllLogs()">prepareSvReadAllLogs</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Schedules the execution of "Read Records" commands to read all SV logs.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareUpdateBinary(byte,int,byte%5B%5D)">prepareUpdateBinary</a></span>&#8203;(byte&nbsp;sfi,
                    int&nbsp;offset,
@@ -358,7 +374,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  data of a "binary" file with the new data given from the indicated offset.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareUpdateRecord(byte,int,byte%5B%5D)">prepareUpdateRecord</a></span>&#8203;(byte&nbsp;sfi,
                    int&nbsp;recordNumber,
@@ -368,7 +384,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  contents with the provided data.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareVerifyPin(byte%5B%5D)">prepareVerifyPin</a></span>&#8203;(byte[]&nbsp;pin)</code></th>
 <td class="colLast">
@@ -376,7 +392,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  and/or unlock access to certain card files.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareWriteBinary(byte,int,byte%5B%5D)">prepareWriteBinary</a></span>&#8203;(byte&nbsp;sfi,
                   int&nbsp;offset,
@@ -386,7 +402,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  data of a "binary" file.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#prepareWriteRecord(byte,int,byte%5B%5D)">prepareWriteRecord</a></span>&#8203;(byte&nbsp;sfi,
                   int&nbsp;recordNumber,
@@ -396,7 +412,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  contents with the result of a binary OR between the existing data and the provided data.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#processCommands(org.eclipse.keypop.calypso.card.transaction.ChannelControl)">processCommands</a></span>&#8203;(<a href="ChannelControl.html" title="enum in org.eclipse.keypop.calypso.card.transaction">ChannelControl</a>&nbsp;channelControl)</code></th>
 <td class="colLast">
@@ -474,14 +490,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>prepareGetData</h4>
 <pre class="methodSignature"><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a>&nbsp;prepareGetData&#8203;(<a href="../GetDataTag.html" title="enum in org.eclipse.keypop.calypso.card">GetDataTag</a>&nbsp;tag)</pre>
-<div class="block">Schedules the execution of a "Get Data" command to retrieve the data indicated by the provided
- tag.
+<div class="block">Schedules the execution of one or more "Get Data" command to retrieve the data indicated by the
+ provided data type.
 
  <p>Data will be available in <a href="../card/CalypsoCard.html" title="interface in org.eclipse.keypop.calypso.card.card"><code>CalypsoCard</code></a> using the <a href="../card/ElementaryFile.html#getHeader()"><code>ElementaryFile.getHeader()</code></a>
  or <a href="../card/CalypsoCard.html#getDirectoryHeader()"><code>CalypsoCard.getDirectoryHeader()</code></a> methods, depending on the provided tag.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tag</code> - The tag to use.</dd>
+<dd><code>tag</code> - The data type.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The current instance.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -490,6 +506,31 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code>java.lang.IllegalArgumentException</code> - If tag is null.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0.0</dd>
+</dl>
+</li>
+</ul>
+<a id="preparePutData(org.eclipse.keypop.calypso.card.PutDataTag,byte[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>preparePutData</h4>
+<pre class="methodSignature"><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a>&nbsp;preparePutData&#8203;(<a href="../PutDataTag.html" title="enum in org.eclipse.keypop.calypso.card">PutDataTag</a>&nbsp;tag,
+                 byte[]&nbsp;data)</pre>
+<div class="block">Schedules the execution of one or more "Put Data" command to inject the provided data
+ associated with the provided data type.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tag</code> - The data type.</dd>
+<dd><code>data</code> - The data to inject.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The current instance.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.UnsupportedOperationException</code> - If the Put Data command with the provided tag is not
+     supported.</dd>
+<dd><code>java.lang.IllegalArgumentException</code> - If tag is null or data is empty.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>2.1.0</dd>
 </dl>
 </li>
 </ul>
@@ -1217,6 +1258,25 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code>java.lang.IllegalStateException</code> - If the command is executed while a secure session is open.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.6.0</dd>
+</dl>
+</li>
+</ul>
+<a id="prepareGenerateAsymmetricKeyPair()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>prepareGenerateAsymmetricKeyPair</h4>
+<pre class="methodSignature"><a href="TransactionManager.html" title="type parameter in TransactionManager">T</a>&nbsp;prepareGenerateAsymmetricKeyPair()</pre>
+<div class="block">Schedules the execution of a "Generate Asymmetric Key Pair" command.
+
+ <p>After the execution, the generated key pair will be stored internally into the card. The
+ public part can be retrieved via <a href="#prepareGetData(org.eclipse.keypop.calypso.card.GetDataTag)"><code>prepareGetData(GetDataTag)</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The current instance.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>2.1.0</dd>
 </dl>
 </li>
 </ul>

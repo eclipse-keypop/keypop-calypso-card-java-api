@@ -116,22 +116,36 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
+<th class="colFirst" scope="row"><a href="AsymmetricCryptoSecuritySetting.html" title="interface in org.eclipse.keypop.calypso.card.transaction">AsymmetricCryptoSecuritySetting</a></th>
+<td class="colLast">
+<div class="block">Security setting for a Calypso card transaction secured by "asymmetric" key cryptographic
+ algorithms (PKI).</div>
+</td>
+</tr>
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="FreeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">FreeTransactionManager</a></th>
 <td class="colLast">
 <div class="block">Manager of card transactions requiring no cryptographic computation.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="SearchCommandData.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SearchCommandData</a></th>
 <td class="colLast">
 <div class="block">Contains the input/output data of the <a href="TransactionManager.html#prepareSearchRecords(org.eclipse.keypop.calypso.card.transaction.SearchCommandData)"><code>TransactionManager.prepareSearchRecords(SearchCommandData)</code></a> method.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="SecureExtendedModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecureExtendedModeTransactionManager</a></th>
 <td class="colLast">
 <div class="block">Manager of card transactions secured by symmetric key cryptographic algorithms, adding additional
  operations available only for "Calypso Prime Extended" products.</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="SecurePkiModeTransactionManager.html" title="interface in org.eclipse.keypop.calypso.card.transaction">SecurePkiModeTransactionManager</a></th>
+<td class="colLast">
+<div class="block">Manager of card transactions secured by asymmetric key cryptographic algorithms, compatible with
+ Calypso cards in PKI mode.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -249,37 +263,43 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="altColor">
+<th class="colFirst" scope="row"><a href="InvalidCertificateException.html" title="class in org.eclipse.keypop.calypso.card.transaction">InvalidCertificateException</a></th>
+<td class="colLast">
+<div class="block">Indicates that the certificate is invalid.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="InvalidPinException.html" title="class in org.eclipse.keypop.calypso.card.transaction">InvalidPinException</a></th>
 <td class="colLast">
 <div class="block">Indicates that the provided PIN is invalid.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="ReaderIOException.html" title="class in org.eclipse.keypop.calypso.card.transaction">ReaderIOException</a></th>
 <td class="colLast">
 <div class="block">Indicates a communication error with the reader of the card or crypto module.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="SelectFileException.html" title="class in org.eclipse.keypop.calypso.card.transaction">SelectFileException</a></th>
 <td class="colLast">
 <div class="block">Indicates that the file selection failed because it was not found.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="SessionBufferOverflowException.html" title="class in org.eclipse.keypop.calypso.card.transaction">SessionBufferOverflowException</a></th>
 <td class="colLast">
 <div class="block">Indicates that the secure session cannot be performed atomically because the session buffer
  capacity is not sufficient to handle all the prepared write commands.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="UnauthorizedKeyException.html" title="class in org.eclipse.keypop.calypso.card.transaction">UnauthorizedKeyException</a></th>
 <td class="colLast">
 <div class="block">Indicates that the card requires an unauthorized session key.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="UnexpectedCommandStatusException.html" title="class in org.eclipse.keypop.calypso.card.transaction">UnexpectedCommandStatusException</a></th>
 <td class="colLast">
 <div class="block">Indicates that an unexpected command status was returned by the card or the cryptographic module.</div>
