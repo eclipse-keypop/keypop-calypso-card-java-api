@@ -103,7 +103,7 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @throws UnsupportedOperationException If the Put Data command with the provided tag is not
    *     supported.
    * @throws IllegalArgumentException If tag is null or data is empty.
-   * @since 1.0.0
+   * @since 2.1.0
    */
   T preparePutData(PutDataTag tag, byte[] data);
 

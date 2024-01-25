@@ -31,7 +31,7 @@ public enum PutDataTag {
    */
   CARD_CERTIFICATE,
   /**
-   * Certification Authority Certificate.
+   * Certification Authority (CA) certificate.
    *
    * @since 2.1.0
    */
