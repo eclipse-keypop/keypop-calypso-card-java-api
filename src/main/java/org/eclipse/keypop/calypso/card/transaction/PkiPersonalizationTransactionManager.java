@@ -9,10 +9,10 @@
  ****************************************************************************** */
 package org.eclipse.keypop.calypso.card.transaction;
 
-import org.eclipse.keypop.calypso.card.card.CalypsoCard;
+import org.eclipse.keypop.calypso.card.GetDataTag;
 
 /**
- * Interface for managing PKI personalization transactions
+ * Manager of PKI personalization transactions
  *
  * @since 2.1.0
  */
@@ -22,8 +22,10 @@ public interface PkiPersonalizationTransactionManager
   /**
    * Schedules the execution of a "Generate Asymmetric Key Pair" command.
    *
+   * <p>After the execution, the generated key pair will be stored internally into the card. The
+   * public part can be retrieved via {@link #prepareGetData(GetDataTag)}.
+   *
    * @return The current instance.
-   * @see CalypsoCard#getCardPublicKey()
    * @since 2.1.0
    */
   PkiPersonalizationTransactionManager prepareGenerateAsymmetricKeyPair();

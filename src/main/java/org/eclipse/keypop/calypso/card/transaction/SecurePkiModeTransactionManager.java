@@ -12,8 +12,8 @@ package org.eclipse.keypop.calypso.card.transaction;
 import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
 
 /**
- * The SecurePkiModeTransactionManager interface provides methods to manage transactions with secure
- * session in PKI mode.
+ * Manager of card transactions secured by asymmetric key cryptographic algorithms, compatible with
+ * Calypso cards in PKI mode.
  *
  * @since 2.1.0
  */
