@@ -28,6 +28,8 @@ public interface AsymmetricCryptoSecuritySetting {
    * @param pcaCertificate The PCA certificate to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
+   * @throws IllegalStateException If the contained public key already been registered.
+   * @throws InvalidCertificateException If the check of the provided certificate failed.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addPcaCertificate(PcaCertificate pcaCertificate);
@@ -43,6 +45,8 @@ public interface AsymmetricCryptoSecuritySetting {
    * @param caCertificate The CA certificate to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
+   * @throws IllegalStateException If the contained public key already been registered.
+   * @throws InvalidCertificateException If the check of the provided certificate failed.
    * @see #addPcaCertificate(PcaCertificate)
    * @since 2.1.0
    */
@@ -59,20 +63,22 @@ public interface AsymmetricCryptoSecuritySetting {
    * @param caCertificateFactory The CA certificate factory to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
+   * @throws IllegalStateException If the associated certificate type is already registered.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCaCertificateFactory(
       CaCertificateFactory caCertificateFactory);
 
   /**
-   * Registers a Card Certificate factory.
+   * Registers a card certificate factory.
    *
    * <p>The factory provides the means to build a card certificate from the raw data read from the
    * card.
    *
-   * @param cardCertificateFactory The Card Certificate factory to add.
+   * @param cardCertificateFactory The card certificate factory to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
+   * @throws IllegalStateException If the associated certificate type is already registered.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCardCertificateFactory(
