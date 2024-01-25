@@ -106,18 +106,6 @@ public interface CalypsoCardApiFactory {
       CardReader cardReader, CalypsoCard card, AsymmetricCryptoSecuritySetting securitySetting);
 
   /**
-   * Returns a new instance of {@link PkiPersonalizationTransactionManager}.
-   *
-   * @param cardReader The card reader to be used.
-   * @param card The selected card on which to operate the transaction.
-   * @return A new instance of {@link PkiPersonalizationTransactionManager}.
-   * @throws IllegalArgumentException If one of the parameters is null.
-   * @since 2.1.0
-   */
-  PkiPersonalizationTransactionManager createPkiPersonalizationTransactionManager(
-      CardReader cardReader, CalypsoCard card);
-
-  /**
    * Returns a new instance of {@link SearchCommandData}.
    *
    * @return A new instance of {@link SearchCommandData}.
