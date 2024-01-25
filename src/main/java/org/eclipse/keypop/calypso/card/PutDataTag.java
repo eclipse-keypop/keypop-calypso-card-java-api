@@ -10,7 +10,7 @@
 package org.eclipse.keypop.calypso.card;
 
 /**
- * Enumeration of all supported tags for the Put Data command.
+ * Enumeration of all input data types.
  *
  * <p>May not be applicable to all products.
  *
