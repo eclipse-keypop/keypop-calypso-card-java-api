@@ -9,8 +9,6 @@
  ****************************************************************************** */
 package org.eclipse.keypop.calypso.card.transaction;
 
-import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
-
 /**
  * Manager of card transactions secured by asymmetric key cryptographic algorithms, compatible with
  * Calypso cards in PKI mode.
@@ -25,10 +23,9 @@ public interface SecurePkiModeTransactionManager
    *
    * <p>Note that if the next prepared command is a "Read One Record" or "Read One Or More
    * Counters", then it will by default be merged with the "Open Secure Session" command for
-   * optimization purposes except if the "pre-open" mode is active.
+   * optimization purposes.
    *
    * @return The current instance.
-   * @see CalypsoCardSelectionExtension#preparePreOpenSecureSessionInPkiMode()
    * @since 2.1.0
    */
   SecurePkiModeTransactionManager prepareOpenSecureSession();
