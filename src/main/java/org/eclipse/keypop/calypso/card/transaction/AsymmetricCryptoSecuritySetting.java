@@ -76,7 +76,8 @@ public interface AsymmetricCryptoSecuritySetting {
    * @param caCertificateFactory The CA certificate factory to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
-   * @throws IllegalStateException If the associated certificate type is already registered.
+   * @throws IllegalStateException If a factory associated with the same certificate type is already
+   *     registered.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCaCertificateFactory(
@@ -91,7 +92,8 @@ public interface AsymmetricCryptoSecuritySetting {
    * @param cardCertificateFactory The card certificate factory to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
-   * @throws IllegalStateException If the associated certificate type is already registered.
+   * @throws IllegalStateException If a factory associated with the same certificate type is already
+   *     registered.
    * @since 2.1.0
    */
   AsymmetricCryptoSecuritySetting addCardCertificateFactory(
