@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - added `getCardPublicKey()`, `getCardCertificate()`, `getCaCertificate()` methods to `CalypsoCard`
   - New APIs/SPIs dedicated to the card secure transaction in PKI mode:
     - added SPIs to operate the involved certificates with an external library: `PcaCertificate`, 
-      `CaCertificate`, `CaCertificateFactory`, `CardCertificateFactory`
+      `CaCertificate`, `CaCertificateParser`, `CardCertificateParser`
     - added `AsymmetricCryptoSecuritySetting` interface
     - added `createAsymmetricCryptoSecuritySetting(...)` method to `CalypsoCardApiFactory`
     - added `SecurePkiModeTransactionManager` interface

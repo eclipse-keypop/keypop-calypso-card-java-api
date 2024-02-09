@@ -10,8 +10,8 @@
 package org.eclipse.keypop.calypso.card.transaction;
 
 import org.eclipse.keypop.calypso.card.transaction.spi.CaCertificate;
-import org.eclipse.keypop.calypso.card.transaction.spi.CaCertificateFactory;
-import org.eclipse.keypop.calypso.card.transaction.spi.CardCertificateFactory;
+import org.eclipse.keypop.calypso.card.transaction.spi.CaCertificateParser;
+import org.eclipse.keypop.calypso.card.transaction.spi.CardCertificateParser;
 import org.eclipse.keypop.calypso.card.transaction.spi.PcaCertificate;
 
 /**
@@ -66,36 +66,35 @@ public interface AsymmetricCryptoSecuritySetting {
   AsymmetricCryptoSecuritySetting addCaCertificate(CaCertificate caCertificate);
 
   /**
-   * Registers a CA certificate factory.
+   * Registers a CA certificate parser.
    *
-   * <p>The factory provides the means to build a {@link CaCertificate} from the raw data read from
+   * <p>The parser provides the means to build a {@link CaCertificate} from the raw data read from
    * the card.
    *
-   * <p>This factory will only be used if the CA certificate is not already available.
+   * <p>This parser will only be used if the CA certificate is not already available.
    *
-   * @param caCertificateFactory The CA certificate factory to add.
+   * @param caCertificateParser The CA certificate parser to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
-   * @throws IllegalStateException If a factory associated with the same certificate type is already
+   * @throws IllegalStateException If a parser associated with the same certificate type is already
    *     registered.
    * @since 2.1.0
    */
-  AsymmetricCryptoSecuritySetting addCaCertificateFactory(
-      CaCertificateFactory caCertificateFactory);
+  AsymmetricCryptoSecuritySetting addCaCertificateParser(CaCertificateParser caCertificateParser);
 
   /**
-   * Registers a card certificate factory.
+   * Registers a card certificate parser.
    *
-   * <p>The factory provides the means to build a card certificate from the raw data read from the
+   * <p>The parser provides the means to build a card certificate from the raw data read from the
    * card.
    *
-   * @param cardCertificateFactory The card certificate factory to add.
+   * @param cardCertificateParser The card certificate parser to add.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or invalid.
-   * @throws IllegalStateException If a factory associated with the same certificate type is already
+   * @throws IllegalStateException If a parser associated with the same certificate type is already
    *     registered.
    * @since 2.1.0
    */
-  AsymmetricCryptoSecuritySetting addCardCertificateFactory(
-      CardCertificateFactory cardCertificateFactory);
+  AsymmetricCryptoSecuritySetting addCardCertificateParser(
+      CardCertificateParser cardCertificateParser);
 }

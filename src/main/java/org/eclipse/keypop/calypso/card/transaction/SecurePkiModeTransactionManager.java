@@ -16,7 +16,7 @@ package org.eclipse.keypop.calypso.card.transaction;
  * @since 2.1.0
  */
 public interface SecurePkiModeTransactionManager
-    extends TransactionManager<SecurePkiModeTransactionManager> {
+    extends SecureTransactionManager<SecurePkiModeTransactionManager> {
 
   /**
    * Schedules the execution of an "Open Secure Session" command in PKI mode.
