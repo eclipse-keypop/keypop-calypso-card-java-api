@@ -10,7 +10,7 @@
 package org.eclipse.keypop.calypso.card.transaction.spi;
 
 /**
- * Marker interface for CA certificate factory.
+ * Marker interface for CA certificate parser.
  *
  * <p>The implementation of this interface is provided by the Keypop extensions for asymmetric
  * cryptography.
