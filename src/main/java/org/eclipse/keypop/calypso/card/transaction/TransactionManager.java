@@ -643,6 +643,7 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *     module reader occurs.
    * @throws CardIOException If a communication error with the card occurs.
    * @throws CryptoIOException If a communication error with the cryptographic module occurs.
+   * @throws CryptoException If an error with the cryptographic module occurs.
    * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
    * @throws InconsistentDataException If inconsistent data have been detected.
    * @throws UnauthorizedKeyException If the card requires an unauthorized session key.
