@@ -15,15 +15,15 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 import org.eclipse.keypop.calypso.card.CalypsoCardApiProperties;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class CalypsoCardApiPropertiesTest {
 
   private static String libVersion;
 
-  @BeforeClass
-  public static void beforeClass() throws Exception {
+  @BeforeAll
+  public static void beforeAll() throws Exception {
     InputStream inputStream = new FileInputStream("gradle.properties");
     try {
       Properties properties = new Properties();
