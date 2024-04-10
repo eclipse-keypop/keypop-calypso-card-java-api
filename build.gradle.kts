@@ -22,13 +22,14 @@ apply(plugin = "org.eclipse.keypop")
 repositories {
     mavenLocal()
     mavenCentral()
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 }
 dependencies {
-    implementation("org.eclipse.keypop:keypop-reader-java-api:2.0.0")
+    implementation("org.eclipse.keypop:keypop-reader-java-api:2.0.1-SNAPSHOT") {isChanging=true}
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.assertj:assertj-core:3.25.1")
+    testImplementation("org.assertj:assertj-core:3.25.3")
 }
 
 val javaSourceLevel: String by project
