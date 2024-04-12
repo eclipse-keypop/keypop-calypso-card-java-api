@@ -5,21 +5,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.1.0] - 2024-04-12
 ### Changed
 - Java source and target levels `1.6` -> `1.8`
 ### Upgraded
 - Gradle `6.8.3` -> `7.6.4`
+- Keypop Reader API `2.0.0` -> `2.0.1` (code source not impacted)
 ### Added
 - Support for PKI cards
   - New APIs dedicated to the card personalization: 
     - added `PutDataTag` enum
-    - added `putDataTag(PutDataTag tag, byte[] data)` method to `TransactionManager`
-    - added `generateAsymmetricKeyPair()` method to `TransactionManager`
+    - added `preparePutData(PutDataTag tag, byte[] data)` method to `TransactionManager`
+    - added `prepareGenerateAsymmetricKeyPair()` method to `TransactionManager`
     - added `CARD_PUBLIC_KEY`, `CARD_CERTIFICATE`, `CA_CERTIFICATE` entries to `GetDataTag` enum
     - added `getCardPublicKey()`, `getCardCertificate()`, `getCaCertificate()` methods to `CalypsoCard`
   - New APIs/SPIs dedicated to the card secure transaction in PKI mode:
     - added SPIs to operate the involved certificates with an external library: `PcaCertificate`, 
-      `CaCertificate`, `CaCertificateParser`, `CardCertificateParser`
+      `CaCertificate`, `CaCertificateParser`, `CardCertificate`, `CardCertificateParser`
     - added `AsymmetricCryptoSecuritySetting` interface
     - added `createAsymmetricCryptoSecuritySetting(...)` method to `CalypsoCardApiFactory`
     - added `SecurePkiModeTransactionManager` interface
@@ -257,7 +260,8 @@ GitHub repository.
 ## [1.0.0] - 2021-10-06
 This is the initial release.
 
-[unreleased]: https://github.com/eclipse-keypop/keypop-calypso-card-java-api/compare/2.0.0...HEAD
+[unreleased]: https://github.com/eclipse-keypop/keypop-calypso-card-java-api/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/eclipse-keypop/keypop-calypso-card-java-api/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/eclipse-keypop/keypop-calypso-card-java-api/releases/tag/2.0.0
 [1.8.0]: https://github.com/calypsonet/calypsonet-terminal-calypso-java-api/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/calypsonet/calypsonet-terminal-calypso-java-api/compare/1.6.0...1.7.0
