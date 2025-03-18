@@ -84,6 +84,12 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * <p>Data will be available in {@link CalypsoCard} using the {@link ElementaryFile#getHeader()}
    * or {@link CalypsoCard#getDirectoryHeader()} methods, depending on the provided tag.
    *
+   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+   * this method <b>must not</b> be used within a secure session (both contact and contactless
+   * modes) as it generates APDU commands for which the size of the response data cannot be
+   * predetermined. Regardless of the card type, it is generally recommended to execute this method
+   * outside of a secure session.
+   *
    * @param tag The data type.
    * @return The current instance.
    * @throws UnsupportedOperationException If the Get Data command with the provided tag is not
@@ -130,6 +136,12 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * additional exchanges with the card will be operated and will corrupt the security of the
    * session. Instead, use the method {@link #prepareReadRecords(byte, int, int, int)} for this case
    * and provide valid parameters.
+   *
+   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+   * this method <b>must not</b> be used within a secure session (both contact and contactless
+   * modes) as it generates APDU commands for which the size of the response data cannot be
+   * predetermined. Instead, use {@link #prepareReadRecords(byte, int, int, int)} with explicit
+   * parameters or use this method outside the secure session.
    *
    * @param sfi The SFI of the EF to read.
    * @param recordNumber The record to read.
@@ -192,6 +204,11 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *       Invalid parameters could lead to additional exchanges with the card and thus corrupt the
    *       security of the session.
    * </ul>
+   *
+   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+   * this method <b>must not</b> be used within a secure session (both contact and contactless
+   * modes) as it generates APDU commands for which the size of the response data cannot be
+   * predetermined.
    *
    * @param sfi The SFI of the EF.
    * @param fromRecordNumber The number of the first record to read.
@@ -301,6 +318,11 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    *       {@link SearchCommandData} and {@link CalypsoCard} objects are always filled or an
    *       exception is raised when the reading failed).
    * </ul>
+   *
+   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+   * this method <b>must not</b> be used within a secure session (both contact and contactless
+   * modes) as it generates APDU commands for which the size of the response data cannot be
+   * predetermined.
    *
    * @param data The input/output data containing the parameters of the command.
    * @return The current instance.
