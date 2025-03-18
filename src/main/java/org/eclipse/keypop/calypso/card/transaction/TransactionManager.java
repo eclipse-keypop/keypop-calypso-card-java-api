@@ -84,17 +84,15 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * <p>Data will be available in {@link CalypsoCard} using the {@link ElementaryFile#getHeader()}
    * or {@link CalypsoCard#getDirectoryHeader()} methods, depending on the provided tag.
    *
-   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
-   * this method <b>must not</b> be used within a secure session (both contact and contactless
-   * modes) as it generates APDU commands for which the size of the response data cannot be
-   * predetermined. Regardless of the card type, it is generally recommended to execute this method
-   * only when not in a secure session, or prior to initiating one.
+   * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
+   * contact and contactless modes).
    *
    * @param tag The data type.
    * @return The current instance.
    * @throws UnsupportedOperationException If the Get Data command with the provided tag is not
    *     supported.
    * @throws IllegalArgumentException If tag is null.
+   * @throws IllegalStateException If a secure session is open.
    * @since 1.0.0
    */
   T prepareGetData(GetDataTag tag);
@@ -120,34 +118,18 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
    *
-   * <p>Depending on whether we are inside a secure session, there are two types of behavior
-   * following this command:
+   * <p>The following "process" command will not fail whatever the existence of the targeted file or
+   * record (the {@link CalypsoCard} object may not be filled).
    *
-   * <ul>
-   *   <li>Outside a secure session (best effort mode): the following "process" command will not
-   *       fail whatever the existence of the targeted file or record (the {@link CalypsoCard}
-   *       object may not be filled).
-   *   <li>Inside a secure session in contactless mode (strict mode): the following "process"
-   *       command will fail if the targeted file or record does not exist (the {@link CalypsoCard}
-   *       object is always filled or an exception is raised when the reading failed).
-   * </ul>
-   *
-   * <p><b>This method should not be used inside a secure session in contact mode</b> because
-   * additional exchanges with the card will be operated and will corrupt the security of the
-   * session. Instead, use the method {@link #prepareReadRecords(byte, int, int, int)} for this case
-   * and provide valid parameters.
-   *
-   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
-   * this method <b>must not</b> be used within a secure session (both contact and contactless
-   * modes) as it generates APDU commands for which the size of the response data cannot be
-   * predetermined. Instead, use {@link #prepareReadRecords(byte, int, int, int)} with explicit
-   * parameters or use this method outside the secure session.
+   * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
+   * contact and contactless modes). Instead, use the method {@link #prepareReadRecords(byte, int,
+   * int, int)} for this case and provide valid parameters.
    *
    * @param sfi The SFI of the EF to read.
    * @param recordNumber The record to read.
    * @return The current instance.
    * @throws IllegalArgumentException If one of the provided arguments is out of range.
-   * @throws IllegalStateException If this method is called inside a secure session in contact mode.
+   * @throws IllegalStateException If a secure session is open.
    * @since 1.1.0
    */
   T prepareReadRecord(byte sfi, int recordNumber);
@@ -190,25 +172,12 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
    *
-   * <p>Depending on whether we are inside a secure session, there are two types of behavior
-   * following this command:
+   * <p>The following "process" command will not fail whatever the existence of the targeted file or
+   * the validity of the offset and number of bytes to read (the {@link CalypsoCard} object may not
+   * be filled).
    *
-   * <ul>
-   *   <li>Outside a secure session (best effort mode): the following "process" command will not
-   *       fail whatever the existence of the targeted file or the validity of the offset and number
-   *       of bytes to read (the {@link CalypsoCard} object may not be filled).
-   *   <li>Inside a secure session (strict mode): the following "process" command will fail if the
-   *       targeted file does not exist or if the offset and number of bytes to read are not valid
-   *       (the {@link CalypsoCard} object is always filled or an exception is raised when the
-   *       reading failed).<br>
-   *       Invalid parameters could lead to additional exchanges with the card and thus corrupt the
-   *       security of the session.
-   * </ul>
-   *
-   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
-   * this method <b>must not</b> be used within a secure session (both contact and contactless
-   * modes) as it generates APDU commands for which the size of the response data cannot be
-   * predetermined.
+   * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
+   * contact and contactless modes).
    *
    * @param sfi The SFI of the EF.
    * @param fromRecordNumber The number of the first record to read.
@@ -218,6 +187,7 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @return The current instance.
    * @throws UnsupportedOperationException If this command is not supported by this card.
    * @throws IllegalArgumentException If one of the provided argument is out of range.
+   * @throws IllegalStateException If a secure session is open.
    * @since 1.1.0
    */
   T prepareReadRecordsPartially(
@@ -305,30 +275,19 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * SearchCommandData} object, and the content of the first matching record in {@link CalypsoCard}
    * if requested.
    *
-   * <p>Depending on whether we are inside a secure session, there are two types of behavior
-   * following this command:
+   * <p>The following "process" command will not fail whatever the existence of the targeted file or
+   * the validity of the record number and offset (the {@link SearchCommandData} and {@link
+   * CalypsoCard} objects may not be updated).
    *
-   * <ul>
-   *   <li>Outside a secure session (best effort mode): the following "process" command will not
-   *       fail whatever the existence of the targeted file or the validity of the record number and
-   *       offset (the {@link SearchCommandData} and {@link CalypsoCard} objects may not be
-   *       updated).
-   *   <li>Inside a secure session (strict mode): the following "process" command will fail if the
-   *       targeted file does not exist or if the record number and the offset are not valid (the
-   *       {@link SearchCommandData} and {@link CalypsoCard} objects are always filled or an
-   *       exception is raised when the reading failed).
-   * </ul>
-   *
-   * <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
-   * this method <b>must not</b> be used within a secure session (both contact and contactless
-   * modes) as it generates APDU commands for which the size of the response data cannot be
-   * predetermined.
+   * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
+   * contact and contactless modes).
    *
    * @param data The input/output data containing the parameters of the command.
    * @return The current instance.
    * @throws UnsupportedOperationException If the "Search Record Multiple" command is not available
    *     for this card.
    * @throws IllegalArgumentException If the input data is inconsistent.
+   * @throws IllegalStateException If a secure session is open.
    * @see SearchCommandData
    * @since 1.1.0
    */
