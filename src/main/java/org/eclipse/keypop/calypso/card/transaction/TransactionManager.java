@@ -88,7 +88,7 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * this method <b>must not</b> be used within a secure session (both contact and contactless
    * modes) as it generates APDU commands for which the size of the response data cannot be
    * predetermined. Regardless of the card type, it is generally recommended to execute this method
-   * outside of a secure session.
+   * only when not in a secure session, or prior to initiating one.
    *
    * @param tag The data type.
    * @return The current instance.
