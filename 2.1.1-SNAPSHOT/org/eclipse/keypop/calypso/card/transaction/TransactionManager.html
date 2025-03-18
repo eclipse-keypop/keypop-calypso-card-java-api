@@ -372,7 +372,13 @@ loadScripts(document, 'script');</script>
  provided data type.
 
  <p>Data will be available in <a href="../card/CalypsoCard.html" title="interface in org.eclipse.keypop.calypso.card.card"><code>CalypsoCard</code></a> using the <a href="../card/ElementaryFile.html#getHeader()"><code>ElementaryFile.getHeader()</code></a>
- or <a href="../card/CalypsoCard.html#getDirectoryHeader()"><code>CalypsoCard.getDirectoryHeader()</code></a> methods, depending on the provided tag.</div>
+ or <a href="../card/CalypsoCard.html#getDirectoryHeader()"><code>CalypsoCard.getDirectoryHeader()</code></a> methods, depending on the provided tag.
+
+ <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+ this method <b>must not</b> be used within a secure session (both contact and contactless
+ modes) as it generates APDU commands for which the size of the response data cannot be
+ predetermined. Regardless of the card type, it is generally recommended to execute this method
+ outside of a secure session.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>tag</code> - The data type.</dd>
@@ -435,7 +441,13 @@ loadScripts(document, 'script');</script>
  <p><b>This method should not be used inside a secure session in contact mode</b> because
  additional exchanges with the card will be operated and will corrupt the security of the
  session. Instead, use the method <a href="#prepareReadRecords(byte,int,int,int)"><code>prepareReadRecords(byte, int, int, int)</code></a> for this case
- and provide valid parameters.</div>
+ and provide valid parameters.
+
+ <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+ this method <b>must not</b> be used within a secure session (both contact and contactless
+ modes) as it generates APDU commands for which the size of the response data cannot be
+ predetermined. Instead, use <a href="#prepareReadRecords(byte,int,int,int)"><code>prepareReadRecords(byte, int, int, int)</code></a> with explicit
+ parameters or use this method outside the secure session.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>sfi</code> - The SFI of the EF to read.</dd>
@@ -518,7 +530,12 @@ loadScripts(document, 'script');</script>
        reading failed).<br>
        Invalid parameters could lead to additional exchanges with the card and thus corrupt the
        security of the session.
- </ul></div>
+ </ul>
+
+ <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+ this method <b>must not</b> be used within a secure session (both contact and contactless
+ modes) as it generates APDU commands for which the size of the response data cannot be
+ predetermined.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>sfi</code> - The SFI of the EF.</dd>
@@ -649,7 +666,12 @@ loadScripts(document, 'script');</script>
        targeted file does not exist or if the record number and the offset are not valid (the
        <a href="SearchCommandData.html" title="interface in org.eclipse.keypop.calypso.card.transaction"><code>SearchCommandData</code></a> and <a href="../card/CalypsoCard.html" title="interface in org.eclipse.keypop.calypso.card.card"><code>CalypsoCard</code></a> objects are always filled or an
        exception is raised when the reading failed).
- </ul></div>
+ </ul>
+
+ <p><b>SECURITY WARNING:</b> When working with legacy card configured with DES or DES-X keys,
+ this method <b>must not</b> be used within a secure session (both contact and contactless
+ modes) as it generates APDU commands for which the size of the response data cannot be
+ predetermined.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input/output data containing the parameters of the command.</dd>
