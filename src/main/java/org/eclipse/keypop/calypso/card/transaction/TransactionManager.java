@@ -101,12 +101,15 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * Schedules the execution of one or more "Put Data" command to inject the provided data
    * associated with the provided data type.
    *
+   * <p>This command can be performed only out of a secure session.
+   *
    * @param tag The data type.
    * @param data The data to inject.
    * @return The current instance.
    * @throws UnsupportedOperationException If the Put Data command with the provided tag is not
    *     supported.
    * @throws IllegalArgumentException If tag is null or data is empty.
+   * @throws IllegalStateException If a secure session is open.
    * @since 2.1.0
    */
   T preparePutData(PutDataTag tag, byte[] data);
