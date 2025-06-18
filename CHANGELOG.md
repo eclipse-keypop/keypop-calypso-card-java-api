@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fixed JUnit configuration.
+### Changed
+- Migrated the CI pipeline from Jenkins to GitHub Actions.
 
 ## [2.1.2] - 2025-03-20
 ### Added
