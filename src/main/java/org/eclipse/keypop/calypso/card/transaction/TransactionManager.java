@@ -643,7 +643,9 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @throws SelectFileException If a "Select File" prepared card command indicated that the file
    *     was not found.
    * @since 1.6.0
+   * @deprecated This method is deprecated and will be removed in a future version.
    */
+  @Deprecated
   T processCommands(ChannelControl channelControl);
 
   /**
