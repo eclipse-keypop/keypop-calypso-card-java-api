@@ -18,6 +18,7 @@ import org.eclipse.keypop.calypso.card.PutDataTag;
 import org.eclipse.keypop.calypso.card.SelectFileControl;
 import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.calypso.card.card.ElementaryFile;
+import org.eclipse.keypop.reader.transaction.spi.CardTransactionManager;
 
 /**
  * Contains operations common to all card transactions.
@@ -47,7 +48,8 @@ import org.eclipse.keypop.calypso.card.card.ElementaryFile;
  * @param <T> The type of the lowest level child object.
  * @since 2.0.0
  */
-public interface TransactionManager<T extends TransactionManager<T>> {
+public interface TransactionManager<T extends TransactionManager<T>>
+    extends CardTransactionManager<T> {
 
   /**
    * Schedules the execution of a "Select File" command to select an EF by its LID in the current
@@ -643,7 +645,7 @@ public interface TransactionManager<T extends TransactionManager<T>> {
    * @throws SelectFileException If a "Select File" prepared card command indicated that the file
    *     was not found.
    * @since 1.6.0
-   * @deprecated This method is deprecated and will be removed in a future version.
+   * @deprecated Use {@link #processCommands(org.eclipse.keypop.reader.ChannelControl)} instead.
    */
   @Deprecated
   T processCommands(ChannelControl channelControl);

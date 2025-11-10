@@ -25,6 +25,7 @@ package org.eclipse.keypop.calypso.card.transaction;
  * PIN verification attempts.
  *
  * @since 1.2.0
+ * @deprecated This exception is deprecated and will be removed in a future version.
  */
 public final class UnexpectedCommandStatusException extends RuntimeException {
 
