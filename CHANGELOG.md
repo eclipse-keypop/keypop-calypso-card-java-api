@@ -12,11 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Migrated the CI pipeline from Jenkins to GitHub Actions.
 ### Deprecated
-- `ChannelControl` enum will be removed in a future version.
-- `TransactionManager.processCommands(ChannelControl channelControl)` method will be removed in a future version.
-- `CardIOException`, `ReaderIOException` and `UnexpectedCommandStatusException` are now marked with `@Deprecated` annotation.
+- `ChannelControl`, `TransactionManager.processCommands(ChannelControl channelControl)`, `CardIOException`,
+  `ReaderIOException`, `UnexpectedCommandStatusException`.
 ### Upgraded
-- API UML specification `2.1.2` -> `2.2.0`.
 - Keypop Reader API `2.0.1` -> `2.1.0`
 
 ## [2.1.2] - 2025-03-20
