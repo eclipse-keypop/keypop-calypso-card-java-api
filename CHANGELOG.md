@@ -12,8 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Migrated the CI pipeline from Jenkins to GitHub Actions.
 ### Deprecated
-- `ChannelControl`, `TransactionManager.processCommands(ChannelControl channelControl)`, `CardIOException`,
-  `ReaderIOException`, `UnexpectedCommandStatusException`.
+- `ChannelControl`, 
+- `TransactionManager.processCommands(ChannelControl channelControl)`, 
+- `CardIOException`,
+- `ReaderIOException`, 
+- `UnexpectedCommandStatusException`.
 ### Upgraded
 - Keypop Reader API `2.0.1` -> `2.1.0`
 
