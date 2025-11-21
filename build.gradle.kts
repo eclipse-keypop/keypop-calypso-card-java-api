@@ -14,7 +14,7 @@ plugins {
 ///////////////////////////////////////////////////////////////////////////////
 
 dependencies {
-  implementation("org.eclipse.keypop:keypop-reader-java-api:2.1.0-SNAPSHOT") { isChanging = true }
+  implementation("org.eclipse.keypop:keypop-reader-java-api:2.1.0")
   testImplementation(platform("org.junit:junit-bom:5.12.2"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
