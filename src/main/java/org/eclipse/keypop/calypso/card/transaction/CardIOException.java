@@ -15,7 +15,9 @@ package org.eclipse.keypop.calypso.card.transaction;
  * Indicates a communication error with the card (e.g. card removal, etc.).
  *
  * @since 1.0.0
+ * @deprecated This exception is deprecated and will be removed in a future version.
  */
+@Deprecated
 public final class CardIOException extends RuntimeException {
 
   /**

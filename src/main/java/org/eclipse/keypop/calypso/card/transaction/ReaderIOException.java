@@ -15,7 +15,9 @@ package org.eclipse.keypop.calypso.card.transaction;
  * Indicates a communication error with the reader of the card or crypto module.
  *
  * @since 1.2.0
+ * @deprecated This exception is deprecated and will be removed in a future version.
  */
+@Deprecated
 public final class ReaderIOException extends RuntimeException {
 
   /**

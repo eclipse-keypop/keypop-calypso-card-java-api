@@ -5,10 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `TransactionManager` now extends `CardTransactionManager` from Keypop Reader API.
 ### Fixed
 - Fixed JUnit configuration.
 ### Changed
 - Migrated the CI pipeline from Jenkins to GitHub Actions.
+### Deprecated
+- `ChannelControl`, 
+- `TransactionManager.processCommands(ChannelControl channelControl)`, 
+- `CardIOException`,
+- `ReaderIOException`, 
+- `UnexpectedCommandStatusException`.
+### Upgraded
+- Keypop Reader API `2.0.1` -> `2.1.0`
 
 ## [2.1.2] - 2025-03-20
 ### Added
