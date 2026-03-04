@@ -1,0 +1,4 @@
+org.eclipse.keypop.calypso.card
+org.eclipse.keypop.calypso.card.card
+org.eclipse.keypop.calypso.card.transaction
+org.eclipse.keypop.calypso.card.transaction.spi
