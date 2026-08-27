@@ -24,6 +24,10 @@ import org.eclipse.keypop.reader.CardReader;
  * <p>An instance of this interface can be obtained via the method {@link
  * CalypsoCardApiFactory#createFreeTransactionManager(CardReader, CalypsoCard)}.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_FreeTransactionManager">FreeTransactionManager</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public interface FreeTransactionManager extends TransactionManager<FreeTransactionManager> {}

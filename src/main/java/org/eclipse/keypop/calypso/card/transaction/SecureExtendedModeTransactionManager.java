@@ -26,6 +26,10 @@ import org.eclipse.keypop.reader.CardReader;
  * CalypsoCardApiFactory#createSecureExtendedModeTransactionManager(CardReader, CalypsoCard,
  * SymmetricCryptoSecuritySetting)}.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SecureExtendedModeTransactionManager">SecureExtendedModeTransactionManager</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public interface SecureExtendedModeTransactionManager
@@ -43,6 +47,10 @@ public interface SecureExtendedModeTransactionManager
    *
    * <p>When it is needed, it is advised to use this command only once at the beginning of the
    * secure session.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureExtendedModeTransactionManager_prepareEarlyMutualAuthentication">SecureExtendedModeTransactionManager.prepareEarlyMutualAuthentication</a>
+   * for the normative contract.
    *
    * @return The current instance.
    * @throws UnsupportedOperationException The "Manage Secure Session" command is not available for
@@ -67,6 +75,10 @@ public interface SecureExtendedModeTransactionManager
    *
    * <p>This command only makes sense in the context of a secure session.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureExtendedModeTransactionManager_prepareActivateEncryption">SecureExtendedModeTransactionManager.prepareActivateEncryption</a>
+   * for the normative contract.
+   *
    * @return The current instance.
    * @throws UnsupportedOperationException The "Manage Secure Session" command is not available for
    *     this context (Card and/or cryptographic module does not support the extended mode).
@@ -86,6 +98,10 @@ public interface SecureExtendedModeTransactionManager
    *
    * <p>Note: the {@link SecureTransactionManager#prepareCloseSecureSession()} ()} method
    * automatically stops the encryption.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureExtendedModeTransactionManager_prepareDeactivateEncryption">SecureExtendedModeTransactionManager.prepareDeactivateEncryption</a>
+   * for the normative contract.
    *
    * @return The current instance.
    * @throws UnsupportedOperationException The "Manage Secure Session" command is not available for

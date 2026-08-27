@@ -14,6 +14,10 @@ package org.eclipse.keypop.calypso.card;
 /**
  * API properties.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_CalypsoCardApiProperties">CalypsoCardApiProperties</a>
+ * for the normative contract.
+ *
  * @since 1.0.0
  */
 public final class CalypsoCardApiProperties {
@@ -23,7 +27,7 @@ public final class CalypsoCardApiProperties {
    *
    * @since 1.0.0
    */
-  public static final String VERSION = "2.2";
+  public static final String VERSION = "3.0";
 
   /** Private constructor */
   private CalypsoCardApiProperties() {}

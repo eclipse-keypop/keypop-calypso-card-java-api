@@ -18,14 +18,14 @@ import org.eclipse.keypop.calypso.card.PutDataTag;
 import org.eclipse.keypop.calypso.card.SelectFileControl;
 import org.eclipse.keypop.calypso.card.card.CalypsoCard;
 import org.eclipse.keypop.calypso.card.card.ElementaryFile;
-import org.eclipse.keypop.reader.transaction.spi.CardTransactionManager;
+import org.eclipse.keypop.reader.transaction.spi.IsoCardTransactionManager;
 
 /**
  * Contains operations common to all card transactions.
  *
  * <p>To exchange data with the card, it is first necessary to prepare the commands to be
- * transmitted to the card and then to process the prepared commands via the {@link
- * #processCommands(ChannelControl)} method.
+ * transmitted to the card and then to process the prepared commands via the inherited {@link
+ * IsoCardTransactionManager#processCommands()} method.
  *
  * <p>The card commands preparation step makes it possible to group commands together in order to
  * minimize network data exchanges (especially useful in a distributed architecture).
@@ -45,11 +45,15 @@ import org.eclipse.keypop.reader.transaction.spi.CardTransactionManager;
  *   <li>Input data length: [1..250] or [1..32767] for binary files
  * </ul>
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_TransactionManager">TransactionManager</a>
+ * for the normative contract.
+ *
  * @param <T> The type of the lowest level child object.
  * @since 2.0.0
  */
 public interface TransactionManager<T extends TransactionManager<T>>
-    extends CardTransactionManager<T> {
+    extends IsoCardTransactionManager {
 
   /**
    * Schedules the execution of a "Select File" command to select an EF by its LID in the current
@@ -60,6 +64,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * ElementaryFile#getHeader()} methods.
    *
    * <p>Caution: the command will fail if the selected file is not an EF.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareSelectFile_byLid">TransactionManager.prepareSelectFile</a>
+   * for the normative contract.
    *
    * @param lid The LID of the EF to select.
    * @return The current instance.
@@ -73,6 +81,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>Data will be available in {@link CalypsoCard} using the {@link ElementaryFile#getHeader()}
    * method.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareSelectFile_byControl">TransactionManager.prepareSelectFile</a>
+   * for the normative contract.
    *
    * @param selectFileControl A {@link SelectFileControl} enum entry.
    * @return The current instance.
@@ -91,6 +103,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
    * contact and contactless modes).
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareGetData">TransactionManager.prepareGetData</a>
+   * for the normative contract.
+   *
    * @param tag The data type.
    * @return The current instance.
    * @throws UnsupportedOperationException If the Get Data command with the provided tag is not
@@ -106,6 +122,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * associated with the provided data type.
    *
    * <p>This command can be performed only out of a secure session.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_preparePutData">TransactionManager.preparePutData</a>
+   * for the normative contract.
    *
    * @param tag The data type.
    * @param data The data to inject.
@@ -131,6 +151,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
    * contact and contactless modes). Instead, use the method {@link #prepareReadRecords(byte, int,
    * int, int)} for this case and provide valid parameters.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareReadRecord">TransactionManager.prepareReadRecord</a>
+   * for the normative contract.
    *
    * @param sfi The SFI of the EF to read.
    * @param recordNumber The record to read.
@@ -162,6 +186,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *       security of the session.
    * </ul>
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareReadRecords">TransactionManager.prepareReadRecords</a>
+   * for the normative contract.
+   *
    * @param sfi The SFI of the EF.
    * @param fromRecordNumber The number of the first record to read.
    * @param toRecordNumber The number of the last record to read.
@@ -185,6 +213,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
    * contact and contactless modes).
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareReadRecordsPartially">TransactionManager.prepareReadRecordsPartially</a>
+   * for the normative contract.
    *
    * @param sfi The SFI of the EF.
    * @param fromRecordNumber The number of the first record to read.
@@ -222,6 +254,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *       security of the session.
    * </ul>
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareReadBinary">TransactionManager.prepareReadBinary</a>
+   * for the normative contract.
+   *
    * @param sfi The SFI of the EF.
    * @param offset The offset (0 indicates the first byte).
    * @param nbBytesToRead The number of bytes to read.
@@ -256,6 +292,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *       security of the session.
    * </ul>
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareReadCounter">TransactionManager.prepareReadCounter</a>
+   * for the normative contract.
+   *
    * @param sfi The SFI of the EF.
    * @param nbCountersToRead The number of counters to read.
    * @return The current instance.
@@ -289,6 +329,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p><b>SECURITY WARNING:</b>This method <b>cannot</b> be used within a secure session (both
    * contact and contactless modes).
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareSearchRecords">TransactionManager.prepareSearchRecords</a>
+   * for the normative contract.
+   *
    * @param data The input/output data containing the parameters of the command.
    * @return The current instance.
    * @throws UnsupportedOperationException If the "Search Record Multiple" command is not available
@@ -307,6 +351,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>The PIN status will be available in {@link CalypsoCard} using the {@link
    * CalypsoCard#getPinAttemptRemaining()} and {@link CalypsoCard#isPinBlocked()} methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareCheckPinStatus">TransactionManager.prepareCheckPinStatus</a>
+   * for the normative contract.
+   *
    * @return The current instance.
    * @throws UnsupportedOperationException If the PIN feature is not available for this card.
    * @since 1.0.0
@@ -321,6 +369,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareAppendRecord">TransactionManager.prepareAppendRecord</a>
+   * for the normative contract.
    *
    * @param sfi The sfi to select.
    * @param recordData The new record data to write.
@@ -340,6 +392,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareUpdateRecord">TransactionManager.prepareUpdateRecord</a>
+   * for the normative contract.
    *
    * @param sfi The sfi to select.
    * @param recordNumber The record to update.
@@ -362,6 +418,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareWriteRecord">TransactionManager.prepareWriteRecord</a>
+   * for the normative contract.
+   *
    * @param sfi The sfi to select.
    * @param recordNumber The record to write.
    * @param recordData The data to overwrite in the record. If length {@code <} RecSize, bytes.
@@ -382,6 +442,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareUpdateBinary">TransactionManager.prepareUpdateBinary</a>
+   * for the normative contract.
    *
    * @param sfi The SFI of the EF to select.
    * @param offset The offset (0 indicates the first byte).
@@ -405,6 +469,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareWriteBinary">TransactionManager.prepareWriteBinary</a>
+   * for the normative contract.
+   *
    * @param sfi The SFI of the EF to select.
    * @param offset The offset (0 indicates the first byte).
    * @param data The data to write over the existing data.
@@ -427,6 +495,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareIncreaseCounter">TransactionManager.prepareIncreaseCounter</a>
+   * for the normative contract.
+   *
    * @param sfi SFI of the EF to select.
    * @param counterNumber The number of the counter (must be zero in case of a simulated counter).
    * @param incValue Value to add to the counter (defined as a positive int {@code <=} 16777215
@@ -447,6 +519,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareIncreaseCounters">TransactionManager.prepareIncreaseCounters</a>
+   * for the normative contract.
    *
    * @param sfi SFI of the EF to select.
    * @param counterNumberToIncValueMap The map containing the counter numbers to be incremented and
@@ -470,6 +546,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareDecreaseCounter">TransactionManager.prepareDecreaseCounter</a>
+   * for the normative contract.
+   *
    * @param sfi SFI of the EF to select.
    * @param counterNumber The number of the counter (must be zero in case of a simulated counter).
    * @param decValue Value to subtract to the counter (defined as a positive int {@code <=} 16777215
@@ -490,6 +570,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>Data will be available in {@link CalypsoCard} using the dedicated file and data management
    * methods.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareDecreaseCounters">TransactionManager.prepareDecreaseCounters</a>
+   * for the normative contract.
    *
    * @param sfi SFI of the EF to select.
    * @param counterNumberToDecValueMap The map containing the counter numbers to be decremented and
@@ -524,6 +608,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *       determine the success of the operation..
    * </ul>
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareSetCounter">TransactionManager.prepareSetCounter</a>
+   * for the normative contract.
+   *
    * @param counterNumber {@code >=} 1: Counters file, number of the counter. 0: Simulated "counter"
    *     file.
    * @param sfi SFI of the EF to select.
@@ -555,6 +643,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * data management methods or in the form of dedicated objects using the {@link
    * CalypsoCard#getSvLoadLogRecord()} and {@link CalypsoCard#getSvDebitLogAllRecords()} methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareSvReadAllLogs">TransactionManager.prepareSvReadAllLogs</a>
+   * for the normative contract.
+   *
    * @return The current instance.
    * @throws UnsupportedOperationException If the SV feature is not available for this card.
    * @since 1.0.0
@@ -571,6 +663,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *
    * <p>The PIN status will be available in {@link CalypsoCard} using the {@link
    * CalypsoCard#getPinAttemptRemaining()} and {@link CalypsoCard#isPinBlocked()} methods.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareVerifyPin">TransactionManager.prepareVerifyPin</a>
+   * for the normative contract.
    *
    * @param pin The PIN code value (4-byte long byte array).
    * @return The current instance.
@@ -594,6 +690,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>The PIN status will be available in {@link CalypsoCard} using the {@link
    * CalypsoCard#getPinAttemptRemaining()} and {@link CalypsoCard#isPinBlocked()} methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareChangePin">TransactionManager.prepareChangePin</a>
+   * for the normative contract.
+   *
    * @param newPin The new PIN code value (4-byte long byte array).
    * @return The current instance.
    * @throws UnsupportedOperationException If the PIN feature is not available for this card.
@@ -609,50 +709,35 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * <p>After the execution, the generated key pair will be stored internally into the card. The
    * public part can be retrieved via {@link #prepareGetData(GetDataTag)}.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_prepareGenerateAsymmetricKeyPair">TransactionManager.prepareGenerateAsymmetricKeyPair</a>
+   * for the normative contract.
+   *
    * @return The current instance.
    * @since 2.1.0
    */
   T prepareGenerateAsymmetricKeyPair();
 
   /**
-   * Processes all previously prepared commands and closes the physical channel if requested.
+   * Returns an immutable snapshot of the current secure session state, captured at the moment of
+   * the call.
    *
-   * <p>All APDUs corresponding to the prepared commands are sent to the card, their responses are
-   * retrieved and used to update the {@link CalypsoCard} associated with the transaction.
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_getSecureSessionStatus">TransactionManager.getSecureSessionStatus</a>
+   * for the normative contract.
    *
-   * <p>For write commands, the {@link CalypsoCard} is updated only when the command is successful.
-   *
-   * <p>The process is interrupted at the first failed command.
-   *
-   * @param channelControl Policy for managing the physical channel after executing commands to the
-   *     card.
-   * @return The current instance.
-   * @throws ReaderIOException If a communication error with the card reader or the cryptographic
-   *     module reader occurs.
-   * @throws CardIOException If a communication error with the card occurs.
-   * @throws CryptoIOException If a communication error with the cryptographic module occurs.
-   * @throws CryptoException If an error with the cryptographic module occurs.
-   * @throws UnexpectedCommandStatusException If a command returns an unexpected status.
-   * @throws InconsistentDataException If inconsistent data have been detected.
-   * @throws UnauthorizedKeyException If the card requires an unauthorized session key.
-   * @throws CardSignatureNotVerifiableException If a secure session is open and multiple session
-   *     mode is enabled and an intermediate session is correctly closed but the cryptographic
-   *     module is no longer available to verify the card MAC.
-   * @throws InvalidCardSignatureException If the card signature is incorrect. In the case of a card
-   *     transaction secured by "symmetrical" cryptography (e.g. SAM), this indicates that the card
-   *     has correctly closed the secure session, but the card session is not authentic because the
-   *     MAC of the card is incorrect.
-   * @throws SelectFileException If a "Select File" prepared card command indicated that the file
-   *     was not found.
-   * @since 1.6.0
-   * @deprecated Use {@link #processCommands(org.eclipse.keypop.reader.ChannelControl)} instead.
+   * @return A non-null reference.
+   * @since 3.0.0
    */
-  @Deprecated
-  T processCommands(ChannelControl channelControl);
+  SecureSessionStatus getSecureSessionStatus();
 
   /**
    * Returns the audit data of the transaction containing all APDU exchanges with the card and the
    * cryptographic module.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_TransactionManager_getTransactionAuditData">TransactionManager.getTransactionAuditData</a>
+   * for the normative contract.
    *
    * @return An empty list if there is no audit data.
    * @since 1.2.0

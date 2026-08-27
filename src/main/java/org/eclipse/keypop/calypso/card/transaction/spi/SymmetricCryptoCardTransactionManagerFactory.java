@@ -15,6 +15,10 @@ package org.eclipse.keypop.calypso.card.transaction.spi;
  * Card transaction manager factory provided by crypto extensions to secure Calypso card
  * transactions secured by "symmetric" key cryptographic algorithms (e.g. SAM).
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SymmetricCryptoCardTransactionManagerFactory">SymmetricCryptoCardTransactionManagerFactory</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public interface SymmetricCryptoCardTransactionManagerFactory {}

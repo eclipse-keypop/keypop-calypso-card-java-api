@@ -15,6 +15,10 @@ package org.eclipse.keypop.calypso.card;
  * Enumeration of all expected behaviors of the selection command (see the specifics of this command
  * in the ISO7816-4 standard and the Calypso specification).
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SelectFileControl">SelectFileControl</a>
+ * for the normative contract.
+ *
  * @since 1.0.0
  */
 public enum SelectFileControl {
