@@ -16,6 +16,10 @@ package org.eclipse.keypop.calypso.card;
  *
  * <p>May not be applicable to all products.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_GetDataTag">GetDataTag</a>
+ * for the normative contract.
+ *
  * @since 1.0.0
  */
 public enum GetDataTag {

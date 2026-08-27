@@ -14,6 +14,10 @@ package org.eclipse.keypop.calypso.card.transaction;
 /**
  * Indicates that the provided PIN is invalid.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_InvalidPinException">InvalidPinException</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public final class InvalidPinException extends RuntimeException {

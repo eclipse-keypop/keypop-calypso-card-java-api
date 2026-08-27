@@ -16,6 +16,10 @@ package org.eclipse.keypop.calypso.card.transaction.spi;
  * transaction command set with specific crypto commands such as for example computation and
  * signature verification operations.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_CardTransactionCryptoExtension">CardTransactionCryptoExtension</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public interface CardTransactionCryptoExtension {}

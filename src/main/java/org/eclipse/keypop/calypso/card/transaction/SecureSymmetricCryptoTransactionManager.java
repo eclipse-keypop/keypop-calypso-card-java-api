@@ -22,6 +22,10 @@ import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
  * <p>See {@link SecureTransactionManager} parent interface for more information and details of
  * available card operations.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SecureSymmetricCryptoTransactionManager">SecureSymmetricCryptoTransactionManager</a>
+ * for the normative contract.
+ *
  * @param <T> The type of the lowest level child object.
  * @since 2.0.0
  */
@@ -41,6 +45,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    *
    * <p>This mechanism may in some cases be incompatible with the security constraints and can be
    * disabled via the {@link SymmetricCryptoSecuritySetting#disableReadOnSessionOpening()} method.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareOpenSecureSession">SecureSymmetricCryptoTransactionManager.prepareOpenSecureSession</a>
+   * for the normative contract.
    *
    * @param writeAccessLevel The write access level to be used.
    * @return The current instance.
@@ -64,6 +72,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    * <p>Data will be available in {@link CalypsoCard} using the dedicated SV data management
    * methods.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareSvGet">SecureSymmetricCryptoTransactionManager.prepareSvGet</a>
+   * for the normative contract.
+   *
    * @param svOperation Informs about the nature of the intended operation: debit or reload.
    * @param svAction The type of action: DO a debit or a positive reload, UNDO an undebit or a
    *     negative reload.
@@ -82,6 +94,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    * methods.
    *
    * <p>Note: the key used is the reload key.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareSvReload_withData">SecureSymmetricCryptoTransactionManager.prepareSvReload</a>
+   * for the normative contract.
    *
    * @param amount The value to be reloaded, positive or negative integer in the range.
    *     -8388608..8388607
@@ -114,6 +130,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    *
    * <p>Note 2: the key used is the reload key.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareSvReload_amountOnly">SecureSymmetricCryptoTransactionManager.prepareSvReload</a>
+   * for the normative contract.
+   *
    * @param amount The value to be reloaded, positive integer in the range 0..8388607 for a DO.
    *     action, in the range 0..8388608 for an UNDO action.
    * @return The current instance.
@@ -145,6 +165,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    * methods.
    *
    * <p>Note 1: the key used is the debit key
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareSvDebit_withData">SecureSymmetricCryptoTransactionManager.prepareSvDebit</a>
+   * for the normative contract.
    *
    * @param amount The amount to be subtracted or added, positive integer in the range 0..32767 when
    *     subtracted and 0..32768 when added.
@@ -181,6 +205,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    *
    * <p>Note 2: the key used is the debit key.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareSvDebit_amountOnly">SecureSymmetricCryptoTransactionManager.prepareSvDebit</a>
+   * for the normative contract.
+   *
    * @param amount The amount to be subtracted or added, positive integer in the range 0..32767 when
    *     subtracted and 0..32768 when added.
    * @return The current instance.
@@ -209,6 +237,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    * <p>The DF status will be available in {@link CalypsoCard} using the {@link
    * CalypsoCard#isDfInvalidated()} method.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareInvalidate">SecureSymmetricCryptoTransactionManager.prepareInvalidate</a>
+   * for the normative contract.
+   *
    * @throws IllegalStateException If the card is already invalidated.
    * @throws SessionBufferOverflowException If the command will overflow the modifications buffer
    *     size and the multiple session is not allowed.
@@ -225,6 +257,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    *
    * <p>The DF status will be available in {@link CalypsoCard} using the {@link
    * CalypsoCard#isDfInvalidated()} method.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareRehabilitate">SecureSymmetricCryptoTransactionManager.prepareRehabilitate</a>
+   * for the normative contract.
    *
    * @return The current instance.
    * @throws IllegalStateException If the card is not invalidated.
@@ -244,6 +280,10 @@ public interface SecureSymmetricCryptoTransactionManager<
    * key is diversified by the cryptographic module from a primary key and encrypted using the
    * indicated issuer key to secure the transfer to the card. All provided KIFs and KVCs must be
    * present in the cryptographic module.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureSymmetricCryptoTransactionManager_prepareChangeKey">SecureSymmetricCryptoTransactionManager.prepareChangeKey</a>
+   * for the normative contract.
    *
    * @param keyIndex The index of the key to be replaced (1 for the issuer key, 2 for the load key,
    *     3 for the debit key).

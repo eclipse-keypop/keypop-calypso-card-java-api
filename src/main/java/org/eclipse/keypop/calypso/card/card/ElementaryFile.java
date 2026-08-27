@@ -14,12 +14,20 @@ package org.eclipse.keypop.calypso.card.card;
 /**
  * Calypso Elementary File.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_ElementaryFile">ElementaryFile</a>
+ * for the normative contract.
+ *
  * @since 1.0.0
  */
 public interface ElementaryFile {
 
   /**
    * Gets the associated SFI.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_ElementaryFile_getSfi">ElementaryFile.getSfi</a>
+   * for the normative contract.
    *
    * @return The SFI.
    * @since 1.0.0
@@ -29,6 +37,10 @@ public interface ElementaryFile {
   /**
    * Gets the file header.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_ElementaryFile_getHeader">ElementaryFile.getHeader</a>
+   * for the normative contract.
+   *
    * @return Null if header is not yet set.
    * @since 1.0.0
    */
@@ -37,6 +49,10 @@ public interface ElementaryFile {
   /**
    * Gets the file data.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_ElementaryFile_getData">ElementaryFile.getData</a>
+   * for the normative contract.
+   *
    * @return A non-null data reference.
    * @since 1.0.0
    */
@@ -44,6 +60,10 @@ public interface ElementaryFile {
 
   /**
    * The different types of EF.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_Type">ElementaryFile.Type</a>
+   * for the normative contract.
    *
    * @since 1.0.0
    */

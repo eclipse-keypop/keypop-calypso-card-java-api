@@ -5,6 +5,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+:warning: Major version aligning the API with version `3.0` of the
+[CNA Terminal Calypso Card API specification](https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/).
+This release is **not** backward compatible with `2.x`.
+### Added
+- `SecureSessionStatus`: immutable snapshot of the secure session state, obtained via
+  `TransactionManager.getSecureSessionStatus()`.
+- `SecureSessionType` enumeration: cryptographic nature of the session (`SYMMETRIC` / `ASYMMETRIC`).
+- `AsymmetricCryptoSecuritySetting.assignOpenSecureSessionMaxDuration(long, long)` and
+  `assignOpenSecureSessionMaxDuration(long, byte[], long)`.
+- `SymmetricCryptoSecuritySetting.assignOpenSecureSessionMaxDuration(long, long)`,
+  `assignOpenSecureSessionMaxDuration(long, byte[], long)`, `assignSvOperationMaxDuration(long, long)` and
+  `assignSvOperationMaxDuration(long, byte[], long)`.
+### Changed
+- `TransactionManager` now extends `IsoCardTransactionManager` (Reader API 3.0) instead of the generic
+  `CardTransactionManager<T>`. It no longer redefines command processing and relies on the inherited
+  `processCommands()`; multi-channel operations are reached through `asMultichannelCardTransactionManager()`.
+- Upgraded the `keypop-reader-java-api` dependency to `3.0.0`.
+### Removed
+- `ChannelControl` and `TransactionManager.processCommands(ChannelControl)`, both deprecated: use the inherited
+  `processCommands()`.
+- `CardIOException`, `ReaderIOException` and `UnexpectedCommandStatusException`, all deprecated: superseded by
+  `CardCommunicationException`, `ReaderCommunicationException` and `InvalidCardResponseException` of the Reader
+  API 3.0, raised by the inherited `processCommands()`.
 
 ## [2.2.0] - 2025-11-21
 ### Added
