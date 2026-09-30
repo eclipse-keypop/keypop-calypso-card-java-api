@@ -19,6 +19,10 @@ import org.eclipse.keypop.calypso.card.transaction.spi.CardTransactionCryptoExte
  * <p>See {@link TransactionManager} parent interface for more information and details of others
  * available card operations.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SecureTransactionManager">SecureTransactionManager</a>
+ * for the normative contract.
+ *
  * @param <T> The type of the lowest level child object.
  * @since 2.0.0
  */
@@ -27,6 +31,10 @@ public interface SecureTransactionManager<T extends SecureTransactionManager<T>>
 
   /**
    * Returns the associated {@link CardTransactionCryptoExtension} instance.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureTransactionManager_getCryptoExtension">SecureTransactionManager.getCryptoExtension</a>
+   * for the normative contract.
    *
    * @param cryptoExtensionClass The class of the crypto extension.
    * @param <E> The generic type of the expected crypto extension.
@@ -45,6 +53,10 @@ public interface SecureTransactionManager<T extends SecureTransactionManager<T>>
    * <p>In this case, a ratification command is added after the "Close Secure Session" command when
    * the communication is done in contactless mode.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureTransactionManager_prepareCloseSecureSession">SecureTransactionManager.prepareCloseSecureSession</a>
+   * for the normative contract.
+   *
    * @return The current instance.
    * @throws IllegalStateException In the following cases:
    *     <ul>
@@ -62,6 +74,10 @@ public interface SecureTransactionManager<T extends SecureTransactionManager<T>>
    * current secure session.
    *
    * <p>This command will be executed in safe mode and will not raise any exceptions.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_SecureTransactionManager_prepareCancelSecureSession">SecureTransactionManager.prepareCancelSecureSession</a>
+   * for the normative contract.
    *
    * @return The current instance.
    * @since 1.6.0

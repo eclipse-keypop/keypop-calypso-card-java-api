@@ -15,6 +15,10 @@ package org.eclipse.keypop.calypso.card.transaction;
  * Indicates that the secure session cannot be performed atomically because the session buffer
  * capacity is not sufficient to handle all the prepared write commands.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SessionBufferOverflowException">SessionBufferOverflowException</a>
+ * for the normative contract.
+ *
  * @since 1.2.0
  */
 public final class SessionBufferOverflowException extends RuntimeException {

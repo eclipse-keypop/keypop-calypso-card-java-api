@@ -42,12 +42,20 @@ import org.eclipse.keypop.reader.selection.spi.IsoSmartCard;
  *       by the card transaction manager.
  * </ul>
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_CalypsoCard">CalypsoCard</a>
+ * for the normative contract.
+ *
  * @since 1.0.0
  */
 public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gets the card product type.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getProductType">CalypsoCard.getProductType</a>
+   * for the normative contract.
    *
    * @return A non-null reference.
    * @since 1.0.0
@@ -56,6 +64,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Indicates if the card is a Calypso HCE (Host Card Emulation) .
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isHce">CalypsoCard.isHce</a>
+   * for the normative contract.
    *
    * @return True if the card is a Calypso HCE.
    * @since 1.0.0
@@ -74,6 +86,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * <p>For older Calypso cards it may be necessary to execute a Select File command in order to
    * determine the invalidation status.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isDfInvalidated">CalypsoCard.isDfInvalidated</a>
+   * for the normative contract.
+   *
    * @return True if the current DF has been invalidated.
    * @since 1.0.0
    */
@@ -90,6 +106,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * <p>The AID selects the application by specifying all or part of the targeted DF Name (5 bytes
    * minimum).
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getDfName">CalypsoCard.getDfName</a>
+   * for the normative contract.
+   *
    * @return A non-null byte array containing the DF Name bytes (5 to 16 bytes).
    * @since 1.0.0
    */
@@ -97,6 +117,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gets the Calypso application serial number as an array of bytes.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getApplicationSerialNumber">CalypsoCard.getApplicationSerialNumber</a>
+   * for the normative contract.
    *
    * @return A non-null byte array containing the Application Serial Number (8 bytes).
    * @since 1.0.0
@@ -106,6 +130,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the raw Calypso startup information.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getStartupInfoRawData">CalypsoCard.getStartupInfoRawData</a>
+   * for the normative contract.
+   *
    * @return A non-null byte array.
    * @since 1.0.0
    */
@@ -113,6 +141,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gets the platform identification byte which is the reference of the chip.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getPlatform">CalypsoCard.getPlatform</a>
+   * for the normative contract.
    *
    * @return The platform identification byte.
    * @since 1.0.0
@@ -122,6 +154,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the Application Type byte which determines the Calypso product type and various options.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getApplicationType">CalypsoCard.getApplicationType</a>
+   * for the normative contract.
+   *
    * @return The Application Type byte.
    * @since 1.0.0
    */
@@ -129,6 +165,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gets the Application Subtype that provides a reference to the file structure of the Calypso DF.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getApplicationSubtype">CalypsoCard.getApplicationSubtype</a>
+   * for the normative contract.
    *
    * @return The Application Subtype byte
    * @since 1.0.0
@@ -139,6 +179,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * Gets the Software Issuer byte that indicates the entity responsible for the software of the
    * selected application.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSoftwareIssuer">CalypsoCard.getSoftwareIssuer</a>
+   * for the normative contract.
+   *
    * @return The Software Issuer byte.
    * @since 1.0.0
    */
@@ -148,6 +192,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * Gets the Software Version field that may be set to any fixed value by the Software Issuer of
    * the Calypso application.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSoftwareVersion">CalypsoCard.getSoftwareVersion</a>
+   * for the normative contract.
+   *
    * @return The Software Version byte.
    * @since 1.0.0
    */
@@ -156,6 +204,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the Software Revision field that may be set to any fixed value by the Software Issuer of
    * the Calypso application.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSoftwareRevision">CalypsoCard.getSoftwareRevision</a>
+   * for the normative contract.
    *
    * @return The Software Revision byte.
    * @since 1.0.0
@@ -168,6 +220,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * <p>Depending on the type of card, the session modification byte indicates the maximum number of
    * bytes that can be modified or the number of possible write commands in a session.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSessionModification">CalypsoCard.getSessionModification</a>
+   * for the normative contract.
+   *
    * @return The Session Modification byte.
    * @since 1.0.0
    */
@@ -178,6 +234,10 @@ public interface CalypsoCard extends IsoSmartCard {
    *
    * <p>The returned array contains the software issuer ID and the discretionary data.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getTraceabilityInformation">CalypsoCard.getTraceabilityInformation</a>
+   * for the normative contract.
+   *
    * @return An empty array if the traceability information is not available.
    * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
    * @see TransactionManager#prepareGetData(GetDataTag)
@@ -187,6 +247,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Returns the card public key.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getCardPublicKey">CalypsoCard.getCardPublicKey</a>
+   * for the normative contract.
    *
    * @return An empty array if the public key is not available.
    * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
@@ -199,6 +263,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Returns the card certificate.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getCardCertificate">CalypsoCard.getCardCertificate</a>
+   * for the normative contract.
+   *
    * @return An empty array if the public key is not available.
    * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
    * @see TransactionManager#prepareGetData(GetDataTag)
@@ -210,6 +278,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Returns the CA certificate.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getCaCertificate">CalypsoCard.getCaCertificate</a>
+   * for the normative contract.
+   *
    * @return An empty array if the public key is not available.
    * @see CalypsoCardSelectionExtension#prepareGetData(GetDataTag)
    * @see TransactionManager#prepareGetData(GetDataTag)
@@ -220,6 +292,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Returns the metadata of the current DF.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getDirectoryHeader">CalypsoCard.getDirectoryHeader</a>
+   * for the normative contract.
    *
    * @return Null if is not set.
    * @see CalypsoCardSelectionExtension#prepareSelectFile(short)
@@ -236,6 +312,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * <p>Note that if a secure session is actually running, then the object contains all session
    * modifications, which can be canceled if the secure session fails.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getFileBySfi">CalypsoCard.getFileBySfi</a>
+   * for the normative contract.
+   *
    * @param sfi The SFI to search.
    * @return Null if the requested EF is not found or if the SFI is equal to 0.
    * @since 1.0.0
@@ -247,6 +327,10 @@ public interface CalypsoCard extends IsoSmartCard {
    *
    * <p>Note that if a secure session is actually running, then the object contains all session
    * modifications, which can be canceled if the secure session fails.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getFileByLid">CalypsoCard.getFileByLid</a>
+   * for the normative contract.
    *
    * @param lid The LID to search.
    * @return Null if the requested EF is not found.
@@ -260,6 +344,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * <p>Note that if a secure session is actually running, then the set contains all session
    * modifications, which can be canceled if the secure session fails.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getFiles">CalypsoCard.getFiles</a>
+   * for the normative contract.
+   *
    * @return A non-null reference (it may be empty if no one EF is set).
    * @since 1.1.0
    */
@@ -267,6 +355,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Tells if the last session with this card has been ratified or not.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isDfRatified">CalypsoCard.isDfRatified</a>
+   * for the normative contract.
    *
    * @return True if the card has been ratified.
    * @throws IllegalStateException If no session has been opened.
@@ -284,6 +376,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * Change Key, Change/Verify PIN, SV Debit/Undebit/Reload). For these other commands, the counter
    * value returned by this method will not be updated.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getTransactionCounter">CalypsoCard.getTransactionCounter</a>
+   * for the normative contract.
+   *
    * @return A positive value.
    * @throws IllegalStateException If no session has been opened.
    * @see CalypsoCardSelectionExtension#preparePreOpenSecureSession(WriteAccessLevel)
@@ -296,6 +392,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * Indicates whether the Public Key Authentication is supported or not (since rev 3.3).
    *
    * <p>This boolean is interpreted from the Application Type byte
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isPkiModeSupported">CalypsoCard.isPkiModeSupported</a>
+   * for the normative contract.
    *
    * @return True if the Public Key Authentication is supported.
    * @since 1.0.0
@@ -310,6 +410,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * the extended mode functionalities may not be available (non-AES keys) and this information is
    * provided by the card in response to the "Open Secure Session" command.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isExtendedModeSupported">CalypsoCard.isExtendedModeSupported</a>
+   * for the normative contract.
+   *
    * @return True if the Extended Mode is supported.
    * @since 1.0.0
    */
@@ -319,6 +423,10 @@ public interface CalypsoCard extends IsoSmartCard {
    * Indicates if the ratification is done on deselect (ratification command not necessary).
    *
    * <p>This boolean is interpreted from the Application Type byte
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isRatificationOnDeselectSupported">CalypsoCard.isRatificationOnDeselectSupported</a>
+   * for the normative contract.
    *
    * @return True if the ratification on deselect is supported.
    * @since 1.0.0
@@ -330,6 +438,10 @@ public interface CalypsoCard extends IsoSmartCard {
    *
    * <p>This boolean is interpreted from the Application Type byte
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isPinFeatureAvailable">CalypsoCard.isPinFeatureAvailable</a>
+   * for the normative contract.
+   *
    * @return True if the card has the PIN feature.
    * @since 1.0.0
    */
@@ -338,6 +450,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Indicates if the PIN is blocked. The maximum number of incorrect PIN submissions has been
    * reached.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isPinBlocked">CalypsoCard.isPinBlocked</a>
+   * for the normative contract.
    *
    * @return True if the PIN status is blocked
    * @throws IllegalStateException If the PIN has not been checked.
@@ -349,6 +465,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gives the number of erroneous PIN presentations remaining before blocking.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getPinAttemptRemaining">CalypsoCard.getPinAttemptRemaining</a>
+   * for the normative contract.
    *
    * @return The number of remaining attempts.
    * @throws IllegalStateException If the PIN has not been checked.
@@ -363,6 +483,10 @@ public interface CalypsoCard extends IsoSmartCard {
    *
    * <p>This boolean is interpreted from the Application Type byte
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_isSvFeatureAvailable">CalypsoCard.isSvFeatureAvailable</a>
+   * for the normative contract.
+   *
    * @return True if the card has the Stored Value feature
    * @since 1.0.0
    */
@@ -370,6 +494,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gets the current SV balance value
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSvBalance">CalypsoCard.getSvBalance</a>
+   * for the normative contract.
    *
    * @return An int
    * @throws IllegalStateException If no SV Get command has been executed.
@@ -385,6 +513,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets the last SV transaction number
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSvLastTNum">CalypsoCard.getSvLastTNum</a>
+   * for the normative contract.
+   *
    * @return An int
    * @throws IllegalStateException If no SV Get command has been executed.
    * @see SecureSymmetricCryptoTransactionManager#prepareSvGet(SvOperation, SvAction)
@@ -399,6 +531,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets a reference to the last {@link SvLoadLogRecord}
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSvLoadLogRecord">CalypsoCard.getSvLoadLogRecord</a>
+   * for the normative contract.
+   *
    * @return A last SV load log record object or null if not available.
    * @see SecureSymmetricCryptoTransactionManager#prepareSvGet(SvOperation, SvAction)
    * @see SecureSymmetricCryptoTransactionManager#prepareSvDebit(int)
@@ -411,6 +547,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * Gets a reference to the last {@link SvDebitLogRecord}
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSvDebitLogLastRecord">CalypsoCard.getSvDebitLogLastRecord</a>
+   * for the normative contract.
    *
    * @return A last SV debit log record object or null if not available.
    * @see SecureSymmetricCryptoTransactionManager#prepareSvGet(SvOperation, SvAction)
@@ -425,6 +565,10 @@ public interface CalypsoCard extends IsoSmartCard {
   /**
    * Gets list of references to the {@link SvDebitLogRecord} read from the card.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCard_getSvDebitLogAllRecords">CalypsoCard.getSvDebitLogAllRecords</a>
+   * for the normative contract.
+   *
    * @return An empty list if no log records are available.
    * @see SecureSymmetricCryptoTransactionManager#prepareSvGet(SvOperation, SvAction)
    * @see SecureSymmetricCryptoTransactionManager#prepareSvDebit(int)
@@ -437,6 +581,10 @@ public interface CalypsoCard extends IsoSmartCard {
 
   /**
    * All Calypso Card products supported by this API.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_ProductType">CalypsoCard.ProductType</a>
+   * for the normative contract.
    *
    * @since 1.0.0
    */

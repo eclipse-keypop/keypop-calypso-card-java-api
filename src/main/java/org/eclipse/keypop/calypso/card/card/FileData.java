@@ -16,6 +16,10 @@ import java.util.SortedMap;
 /**
  * Calypso EF content.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_FileData">FileData</a>
+ * for the normative contract.
+ *
  * @since 1.0.0
  */
 public interface FileData {
@@ -23,6 +27,10 @@ public interface FileData {
   /**
    * Gets a reference to the known content of record #1.<br>
    * For a "binary" file, it means all the bytes of the file.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_FileData_getContent">FileData.getContent</a>
+   * for the normative contract.
    *
    * @return an empty array if the record #1 is not set.
    * @since 1.0.0
@@ -32,6 +40,10 @@ public interface FileData {
   /**
    * Gets a reference to the known content of a specific record.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_FileData_getContent_byRecord">FileData.getContent</a>
+   * for the normative contract.
+   *
    * @param numRecord The record number.
    * @return an empty array if the requested record is not set.
    * @since 1.0.0
@@ -40,6 +52,10 @@ public interface FileData {
 
   /**
    * Gets a copy of a known content subset of a specific record from dataOffset to dataLength.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_FileData_getContent_byRange">FileData.getContent</a>
+   * for the normative contract.
    *
    * @param numRecord The record number.
    * @param dataOffset The offset index (should be {@code >=} 0).
@@ -56,6 +72,10 @@ public interface FileData {
   /**
    * Gets a reference to all known records content.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_FileData_getAllRecordsContent">FileData.getAllRecordsContent</a>
+   * for the normative contract.
+   *
    * @return a non-null map possibly empty if there's no content.
    * @since 1.0.0
    */
@@ -66,6 +86,10 @@ public interface FileData {
    * The counter value is extracted from the 3 next bytes at the index [(numCounter - 1) * 3] of the
    * record #1.<br>
    * e.g. if numCounter == 2, then value is extracted from bytes indexes [3,4,5].
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_FileData_getContentAsCounterValue">FileData.getContentAsCounterValue</a>
+   * for the normative contract.
    *
    * @param numCounter The counter number (should be {@code >=} 1).
    * @return The counter value or null if record #1 or numCounter is not set.
@@ -81,6 +105,10 @@ public interface FileData {
    * The counters values are extracted from record #1.<br>
    * If last counter has a truncated value (when size of record #1 modulo 3 != 0), then last counter
    * value is not returned.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_FileData_getAllCountersValue">FileData.getAllCountersValue</a>
+   * for the normative contract.
    *
    * @return an empty map if record #1 is not set.
    * @since 1.0.0

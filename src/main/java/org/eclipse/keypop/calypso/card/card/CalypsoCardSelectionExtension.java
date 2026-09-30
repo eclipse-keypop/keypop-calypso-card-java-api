@@ -46,6 +46,10 @@ import org.eclipse.keypop.reader.selection.spi.CardSelectionExtension;
  *   <li>Input data length: [1..250] or [1..32767] for binary files
  * </ul>
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_CalypsoCardSelectionExtension">CalypsoCardSelectionExtension</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
@@ -55,6 +59,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *
    * <p>Caution: this functionality is operational only from PRIME revision 3 cards. Invalidated
    * cards are rejected by default.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_acceptInvalidatedCard">CalypsoCardSelectionExtension.acceptInvalidatedCard</a>
+   * for the normative contract.
    *
    * @return The current instance.
    * @since 1.0.0
@@ -69,6 +77,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *
    * <p>Caution 2: the command will fail if the selected file is not an EF.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_prepareSelectFile_byLid">CalypsoCardSelectionExtension.prepareSelectFile</a>
+   * for the normative contract.
+   *
    * @param lid The LID of the EF to select.
    * @return The current instance.
    * @since 1.0.0
@@ -81,6 +93,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *
    * <p>Caution: the resulting APDU command must be compliant with PRIME revision 3 cards.
    * Therefore, the command may be rejected by some earlier revision cards.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_prepareSelectFile_byControl">CalypsoCardSelectionExtension.prepareSelectFile</a>
+   * for the normative contract.
    *
    * @param selectControl A {@link SelectFileControl} enum entry.
    * @return The current instance.
@@ -97,6 +113,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *
    * <p>Caution: the resulting APDU command must be compliant with PRIME revision 3 cards.
    * Therefore, the command may be rejected by some earlier revision cards.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_prepareGetData">CalypsoCardSelectionExtension.prepareGetData</a>
+   * for the normative contract.
    *
    * @param tag The tag to use.
    * @return The current instance.
@@ -115,6 +135,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    * <p>Caution: the resulting APDU command is compliant with PRIME revision 3 cards. Therefore, the
    * command may be rejected by some earlier revision cards.
    *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_prepareReadRecord">CalypsoCardSelectionExtension.prepareReadRecord</a>
+   * for the normative contract.
+   *
    * @param sfi The SFI of the EF to read
    * @param recordNumber The record number to read.
    * @return The current instance.
@@ -132,6 +156,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *
    * <p>Caution: the resulting APDU command is compliant with PRIME revision 3 cards. Therefore, the
    * command may be rejected by some earlier revision cards.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_prepareReadBinary">CalypsoCardSelectionExtension.prepareReadBinary</a>
+   * for the normative contract.
    *
    * @param sfi The SFI of the EF.
    * @param offset The offset (0 indicates the first byte).
@@ -155,6 +183,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *
    * <p>Caution: the resulting APDU command is compliant with PRIME revision 3 cards. Therefore, the
    * command may be rejected by some earlier revision cards.
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_prepareReadCounter">CalypsoCardSelectionExtension.prepareReadCounter</a>
+   * for the normative contract.
    *
    * @param sfi The SFI of the EF.
    * @param nbCountersToRead The number of counters to read.
@@ -206,6 +238,10 @@ public interface CalypsoCardSelectionExtension extends CardSelectionExtension {
    *   <li>an intermediate "processCommand(...)" call has been made
    *   <li>the session uses asymmetric cryptography
    * </ul>
+   *
+   * <p>See <a
+   * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#op_CalypsoCardSelectionExtension_preparePreOpenSecureSession">CalypsoCardSelectionExtension.preparePreOpenSecureSession</a>
+   * for the normative contract.
    *
    * @param writeAccessLevel The write access level.
    * @return The current instance.

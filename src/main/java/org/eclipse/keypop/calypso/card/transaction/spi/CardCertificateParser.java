@@ -17,6 +17,10 @@ package org.eclipse.keypop.calypso.card.transaction.spi;
  * <p>The implementation of this interface is provided by the Keypop extensions for asymmetric
  * cryptography.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_PcaCertificateParser">CardCertificateParser</a>
+ * for the normative contract.
+ *
  * @since 2.1.0
  */
 public interface CardCertificateParser {}

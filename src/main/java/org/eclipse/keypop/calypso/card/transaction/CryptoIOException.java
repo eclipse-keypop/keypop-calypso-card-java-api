@@ -15,6 +15,10 @@ package org.eclipse.keypop.calypso.card.transaction;
  * Indicates a communication error with the crypto module (e.g. timeout with the reader or the
  * computing unit, network error, etc.).
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_CryptoIOException">CryptoIOException</a>
+ * for the normative contract.
+ *
  * @since 2.0.0
  */
 public final class CryptoIOException extends RuntimeException {

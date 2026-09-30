@@ -19,6 +19,10 @@ package org.eclipse.keypop.calypso.card.transaction;
  *   <li>The "Select File" card command status is 6A82h;
  * </ul>
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_SelectFileException">SelectFileException</a>
+ * for the normative contract.
+ *
  * @since 1.4.0
  */
 public final class SelectFileException extends RuntimeException {

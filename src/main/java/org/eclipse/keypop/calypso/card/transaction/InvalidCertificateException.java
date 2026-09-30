@@ -21,6 +21,10 @@ package org.eclipse.keypop.calypso.card.transaction;
  * standards and requirements, either due to incorrect signing, expiration, revocation, or other
  * compliance failures.
  *
+ * <p>See <a
+ * href="https://docs.terminal-api.calypsonet.org/calypsonet-terminal-calypso-card-uml-api/3.0.0-SNAPSHOT/YYMMDD-SP-CNATerminalAPI-CalypsoCard_v3.0.0-SNAPSHOT.html#type_InvalidCertificateException">InvalidCertificateException</a>
+ * for the normative contract.
+ *
  * @since 2.1.0
  */
 public final class InvalidCertificateException extends RuntimeException {
