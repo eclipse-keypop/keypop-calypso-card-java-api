@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   link (tag D0h).
 ### Changed
 - `TransactionManager.preparePutData` now specifies the secure session requirements per tag: `APPLICATION_AID` and
-  `STORED_VALUE_LINK` require a secure session, and the card also requires the symmetric crypto mode with the
+  `STORED_VALUE_LINK` require a secure session opened in symmetric crypto mode, and the card also requires the
   `PERSONALIZATION` level.
 
 ## [2.2.0] - 2025-11-21
