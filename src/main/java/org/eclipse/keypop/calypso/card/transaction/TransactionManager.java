@@ -111,9 +111,10 @@ public interface TransactionManager<T extends TransactionManager<T>>
    *   <li>{@link PutDataTag#CARD_KEY_PAIR}, {@link PutDataTag#CARD_CERTIFICATE} and {@link
    *       PutDataTag#CA_CERTIFICATE}: the command can be performed only out of a secure session.
    *   <li>{@link PutDataTag#APPLICATION_AID} and {@link PutDataTag#STORED_VALUE_LINK}: the command
-   *       can be performed only within a secure session opened in symmetric crypto mode with the
-   *       {@link org.eclipse.keypop.calypso.card.WriteAccessLevel#PERSONALIZATION} level (issuer
-   *       key).
+   *       can be performed only within a secure session. The card also requires the session to be
+   *       opened in symmetric crypto mode with the {@link
+   *       org.eclipse.keypop.calypso.card.WriteAccessLevel#PERSONALIZATION} level (issuer key);
+   *       otherwise it rejects the command and the processing of the commands fails.
    * </ul>
    *
    * <p>The expected data depends on the tag:
