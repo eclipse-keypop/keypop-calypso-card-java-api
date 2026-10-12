@@ -23,7 +23,7 @@ public final class CalypsoCardApiProperties {
    *
    * @since 1.0.0
    */
-  public static final String VERSION = "2.2";
+  public static final String VERSION = "2.3";
 
   /** Private constructor */
   private CalypsoCardApiProperties() {}
