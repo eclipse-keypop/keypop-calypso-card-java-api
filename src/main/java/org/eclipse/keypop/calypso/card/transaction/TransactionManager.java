@@ -105,15 +105,34 @@ public interface TransactionManager<T extends TransactionManager<T>>
    * Schedules the execution of one or more "Put Data" command to inject the provided data
    * associated with the provided data type.
    *
-   * <p>This command can be performed only out of a secure session.
+   * <p>The secure session requirements depend on the tag:
+   *
+   * <ul>
+   *   <li>{@link PutDataTag#CARD_KEY_PAIR}, {@link PutDataTag#CARD_CERTIFICATE} and {@link
+   *       PutDataTag#CA_CERTIFICATE}: the command can be performed only out of a secure session.
+   *   <li>{@link PutDataTag#APPLICATION_AID} and {@link PutDataTag#STORED_VALUE_LINK}: the command
+   *       can be performed only within a secure session opened in symmetric crypto mode with the
+   *       {@link org.eclipse.keypop.calypso.card.WriteAccessLevel#PERSONALIZATION} level (issuer
+   *       key).
+   * </ul>
+   *
+   * <p>The expected data depends on the tag:
+   *
+   * <ul>
+   *   <li>{@link PutDataTag#APPLICATION_AID}: the new AID (5 to 16 bytes).
+   *   <li>{@link PutDataTag#STORED_VALUE_LINK}: the AID of the Stored Value application to link (5
+   *       to 16 bytes), or an empty array to cancel the existing link.
+   * </ul>
    *
    * @param tag The data type.
    * @param data The data to inject.
    * @return The current instance.
    * @throws UnsupportedOperationException If the Put Data command with the provided tag is not
    *     supported.
-   * @throws IllegalArgumentException If tag is null or data is empty.
-   * @throws IllegalStateException If a secure session is open.
+   * @throws IllegalArgumentException If tag or data is null, or if data length is inconsistent with
+   *     the tag.
+   * @throws IllegalStateException If the secure session state does not meet the requirements of the
+   *     provided tag.
    * @since 2.1.0
    */
   T preparePutData(PutDataTag tag, byte[] data);

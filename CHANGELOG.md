@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `PutDataTag.APPLICATION_AID` to modify the AID of the current application (tag 4Fh).
+- `PutDataTag.STORED_VALUE_LINK` to link the current application to a Stored Value application, or to cancel such a
+  link (tag D0h).
+### Changed
+- `TransactionManager.preparePutData` now specifies the secure session requirements per tag: `APPLICATION_AID` and
+  `STORED_VALUE_LINK` require a secure session opened in symmetric crypto mode with the `PERSONALIZATION` level.
 
 ## [2.2.0] - 2025-11-21
 ### Added
